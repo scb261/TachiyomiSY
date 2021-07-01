@@ -90,7 +90,7 @@ class PreferencesHelper(val context: Context) {
 
     fun showLibraryUpdateErrors() = prefs.getBoolean(Keys.showLibraryUpdateErrors, true)
 
-    fun themeMode() = flowPrefs.getEnum(Keys.themeMode, system)
+    fun themeMode() = flowPrefs.getEnum(Keys.themeMode, dark)
 
     fun themeLight() = flowPrefs.getEnum(Keys.themeLight, Values.LightThemeVariant.default)
 

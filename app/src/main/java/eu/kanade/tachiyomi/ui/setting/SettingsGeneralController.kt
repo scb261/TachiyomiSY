@@ -123,7 +123,7 @@ class SettingsGeneralController : SettingsController() {
                         Values.ThemeMode.light.name,
                         Values.ThemeMode.dark.name
                     )
-                    defaultValue = Values.ThemeMode.light.name
+                    defaultValue = Values.ThemeMode.dark.name
                 }
 
                 summary = "%s"
