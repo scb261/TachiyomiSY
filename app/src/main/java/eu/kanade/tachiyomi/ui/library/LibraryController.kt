@@ -447,7 +447,8 @@ class LibraryController(
         menu.findItem(R.id.action_filter).icon.mutate()
 
         // SY -->
-        menu.findItem(R.id.action_sync_favorites).isVisible = preferences.isHentaiEnabled().get()
+        menu.findItem(R.id.action_sync_favorites).isVisible =
+            preferences.isHentaiEnabled().get() && preferences.isSyncEHEnabled().get()
         // SY <--
     }
 

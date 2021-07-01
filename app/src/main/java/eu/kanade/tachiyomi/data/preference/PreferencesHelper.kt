@@ -360,6 +360,8 @@ class PreferencesHelper(val context: Context) {
 
     fun isHentaiEnabled() = flowPrefs.getBoolean(Keys.eh_is_hentai_enabled, true)
 
+    fun isSyncEHEnabled() = flowPrefs.getBoolean(Keys.eh_is_sync_eh_enabled, true)
+
     fun enableExhentai() = flowPrefs.getBoolean(Keys.eh_enableExHentai, false)
 
     fun imageQuality() = flowPrefs.getString(Keys.eh_ehentai_quality, "auto")

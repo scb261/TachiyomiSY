@@ -444,6 +444,9 @@
 
     <!-- Favorites Sync -->
     <string name="sync_favorites">Sync EH favorites</string>
+    <string name="eh_sync_button">\'Sync EH favorites\' button</string>
+    <string name="enable_eh_sync_button">Enable \'Sync EH favorites\' button</string>
+    <string name="pref_enable_eh_sync_button_summary">When disabled, hides the button and removes overflow menu from Library screen. This reduces number of taps needed to manually update library</string>
     <string name="favorites_sync_error">Favorites sync error</string>
     <string name="show_gallery">Show Gallery</string>
     <string name="favorites_sync_bad_library_state">%1$s Sync will not start until the gallery is in only one category.</string>
