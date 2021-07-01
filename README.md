@@ -8,15 +8,15 @@ For now I will cherry-pick new commits once in a while.
 Features are the same as in TachiyomiSY, but with following exceptions:
 * Animations from bottom navigation bar are removed due to my personal preference.
 * Dark theme is used by default.
-* Option to disable 'Sync EH favorites' button and overflow from Library screen (one less tap to manually update library).
+* Option to disable 'Sync EH favorites' and overflow buttons from Library screen (one less tap to manually update library).
 * Any features added after last time I cherry-picked new commits.
 
 ## Download
-Get the app from [releases page]https://github.com/scb261/TachiyomiXZM/releases). There are no preview versions.
+Get the app from [releases page](https://github.com/scb261/TachiyomiXZM/releases). There are no preview versions.
 
 ## Issues, Feature Requests and Contributing
 
-**Feture requests** will not be implemented except features I want personally. Ask for them in Tachiyomi or TachiyomiSY, and I may or may nor cherry pick it from there.
+**Feture requests** will not be implemented except features I want personally. Ask for them in Tachiyomi or TachiyomiSY, and I may or may not cherry pick it from there.
 
 **Bug reports** are welcome, but I don't promise any fixes due to my limited knowledge in Android apps.
 
@@ -24,7 +24,7 @@ Get the app from [releases page]https://github.com/scb261/TachiyomiXZM/releases)
 
 ## FAQ
 
-[See Tachiyomi FAQ](https://tachiyomi.org/) for questions related to Tachiyomi. If you have any questions related to TachiyomiXZM - you can contact me on Discord - scb261#3238 (though I may answer with some delay).
+See [Tachiyomi help center](https://tachiyomi.org/help/) for FAQ related to Tachiyomi and troubleshooting problems. If you have any questions related to TachiyomiXZM - you can contact me on Discord - scb261#3238 (though I may answer with some delay).
 
 ## TODO
 
