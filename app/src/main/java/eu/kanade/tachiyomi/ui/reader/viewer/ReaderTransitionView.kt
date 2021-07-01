@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.view.isVisible
@@ -33,8 +34,8 @@ class ReaderTransitionView @JvmOverloads constructor(context: Context, attrs: At
         missingChapterWarning(transition)
 
         val color = when (Injekt.get<PreferencesHelper>().readerTheme().get()) {
-            0 -> context.getColor(android.R.color.black)
-            else -> context.getColor(android.R.color.white)
+            0 -> ContextCompat.getColor(context, android.R.color.black)
+            else -> ContextCompat.getColor(context, android.R.color.white)
         }
         listOf(binding.upperText, binding.warningText, binding.lowerText).forEach {
             it.setTextColor(color)

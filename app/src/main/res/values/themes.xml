@@ -81,11 +81,7 @@
     <!--==============-->
 
     <!--== Light base ==-->
-    <style name="Base.Theme.Tachiyomi.Light" parent="Theme.Base.Light">
-        <!-- Base background/text colors -->
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-        <item name="android:windowLightStatusBar">true</item>
-    </style>
+    <style name="Base.Theme.Tachiyomi.Light" parent="Theme.Base.Light"/>
 
     <!--== Light theme ==-->
     <style name="Theme.Tachiyomi.Light" parent="Base.Theme.Tachiyomi.Light" />
