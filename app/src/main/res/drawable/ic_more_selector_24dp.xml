@@ -9,9 +9,4 @@
         android:drawable="@drawable/ic_more_24dp"
         android:state_checked="true" />
 
-    <transition
-        android:drawable="@drawable/anim_more_enter"
-        android:fromId="@id/normal"
-        android:toId="@id/checked" />
-
 </animated-selector>

@@ -9,14 +9,4 @@
         android:drawable="@drawable/ic_library_filled_24dp"
         android:state_checked="true" />
 
-    <transition
-        android:drawable="@drawable/anim_library_enter"
-        android:fromId="@id/normal"
-        android:toId="@id/checked" />
-
-    <transition
-        android:drawable="@drawable/anim_library_leave"
-        android:fromId="@id/checked"
-        android:toId="@id/normal" />
-
 </animated-selector>
