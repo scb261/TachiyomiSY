@@ -2,53 +2,33 @@ package exh
 
 import android.content.Context
 import android.os.Build
-import androidx.core.content.edit
-import androidx.preference.PreferenceManager
-import com.pushtorefresh.storio.sqlite.queries.DeleteQuery
-import com.pushtorefresh.storio.sqlite.queries.Query
 import com.pushtorefresh.storio.sqlite.queries.RawQuery
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
-import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.Manga
-import eu.kanade.tachiyomi.data.database.resolvers.MangaUrlPutResolver
-import eu.kanade.tachiyomi.data.database.tables.ChapterTable
 import eu.kanade.tachiyomi.data.database.tables.MangaTable
-import eu.kanade.tachiyomi.data.database.tables.TrackTable
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
-import eu.kanade.tachiyomi.data.preference.PreferenceKeys
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.updater.UpdaterJob
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
-import eu.kanade.tachiyomi.network.PREF_DOH_CLOUDFLARE
 import eu.kanade.tachiyomi.source.Source
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.online.all.Hitomi
 import eu.kanade.tachiyomi.source.online.all.NHentai
-import eu.kanade.tachiyomi.ui.library.LibrarySort
-import eu.kanade.tachiyomi.ui.library.setting.SortDirectionSetting
-import eu.kanade.tachiyomi.ui.library.setting.SortModeSetting
-import eu.kanade.tachiyomi.ui.reader.setting.OrientationType
 import exh.log.xLogE
 import exh.log.xLogW
-import exh.merged.sql.models.MergedMangaReference
 import exh.source.BlacklistedSources
 import exh.source.EH_SOURCE_ID
 import exh.source.HBROWSE_SOURCE_ID
-import exh.source.MERGED_SOURCE_ID
 import exh.source.PERV_EDEN_EN_SOURCE_ID
 import exh.source.PERV_EDEN_IT_SOURCE_ID
 import exh.source.TSUMINO_SOURCE_ID
 import exh.util.over
-import exh.util.under
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import java.io.File
 import java.net.URI
@@ -81,254 +61,8 @@ object EXHMigrations {
                     LibraryUpdateJob.setupTask(context)
                     return false
                 }
-                if (oldVersion under 4) {
-                    db.inTransaction {
-                        updateSourceId(HBROWSE_SOURCE_ID, 6912)
-                        // Migrate BHrowse URLs
-                        val hBrowseManga = db.db.get()
-                            .listOfObjects(Manga::class.java)
-                            .withQuery(
-                                Query.builder()
-                                    .table(MangaTable.TABLE)
-                                    .where("${MangaTable.COL_SOURCE} = $HBROWSE_SOURCE_ID")
-                                    .build()
-                            )
-                            .prepare()
-                            .executeAsBlocking()
-                        hBrowseManga.forEach {
-                            it.url = it.url + "/c00001/"
-                        }
 
-                        db.db.put()
-                            .objects(hBrowseManga)
-                            // Extremely slow without the resolver :/
-                            .withPutResolver(MangaUrlPutResolver())
-                            .prepare()
-                            .executeAsBlocking()
-                    }
-                }
-                if (oldVersion under 5) {
-                    db.inTransaction {
-                        // Migrate Hitomi source IDs
-                        updateSourceId(Hitomi.otherId, 6910)
-                    }
-                }
-                if (oldVersion under 6) {
-                    db.inTransaction {
-                        updateSourceId(PERV_EDEN_EN_SOURCE_ID, 6905)
-                        updateSourceId(PERV_EDEN_IT_SOURCE_ID, 6906)
-                        updateSourceId(NHentai.otherId, 6907)
-                    }
-                }
-                if (oldVersion under 7) {
-                    db.inTransaction {
-                        val mergedMangas = db.db.get()
-                            .listOfObjects(Manga::class.java)
-                            .withQuery(
-                                Query.builder()
-                                    .table(MangaTable.TABLE)
-                                    .where("${MangaTable.COL_SOURCE} = $MERGED_SOURCE_ID")
-                                    .build()
-                            )
-                            .prepare()
-                            .executeAsBlocking()
-
-                        if (mergedMangas.isNotEmpty()) {
-                            val mangaConfigs = mergedMangas.mapNotNull { mergedManga -> readMangaConfig(mergedManga)?.let { mergedManga to it } }
-                            if (mangaConfigs.isNotEmpty()) {
-                                val mangaToUpdate = mutableListOf<Manga>()
-                                val mergedMangaReferences = mutableListOf<MergedMangaReference>()
-                                mangaConfigs.onEach { mergedManga ->
-                                    mergedManga.second.children.firstOrNull()?.url?.let {
-                                        if (db.getManga(it, MERGED_SOURCE_ID).executeAsBlocking() != null) return@onEach
-                                        mergedManga.first.url = it
-                                    }
-                                    mangaToUpdate += mergedManga.first
-                                    mergedMangaReferences += MergedMangaReference(
-                                        id = null,
-                                        isInfoManga = false,
-                                        getChapterUpdates = false,
-                                        chapterSortMode = 0,
-                                        chapterPriority = 0,
-                                        downloadChapters = false,
-                                        mergeId = mergedManga.first.id!!,
-                                        mergeUrl = mergedManga.first.url,
-                                        mangaId = mergedManga.first.id!!,
-                                        mangaUrl = mergedManga.first.url,
-                                        mangaSourceId = MERGED_SOURCE_ID
-                                    )
-                                    mergedManga.second.children.distinct().forEachIndexed { index, mangaSource ->
-                                        val load = mangaSource.load(db, sourceManager) ?: return@forEachIndexed
-                                        mergedMangaReferences += MergedMangaReference(
-                                            id = null,
-                                            isInfoManga = index == 0,
-                                            getChapterUpdates = true,
-                                            chapterSortMode = 0,
-                                            chapterPriority = 0,
-                                            downloadChapters = true,
-                                            mergeId = mergedManga.first.id!!,
-                                            mergeUrl = mergedManga.first.url,
-                                            mangaId = load.manga.id!!,
-                                            mangaUrl = load.manga.url,
-                                            mangaSourceId = load.source.id
-                                        )
-                                    }
-                                }
-                                db.db.put()
-                                    .objects(mangaToUpdate)
-                                    // Extremely slow without the resolver :/
-                                    .withPutResolver(MangaUrlPutResolver())
-                                    .prepare()
-                                    .executeAsBlocking()
-                                db.insertMergedMangas(mergedMangaReferences).executeAsBlocking()
-
-                                val loadedMangaList = mangaConfigs.map { it.second.children }.flatten().mapNotNull { it.load(db, sourceManager) }.distinct()
-                                val chapters = db.db.get()
-                                    .listOfObjects(Chapter::class.java)
-                                    .withQuery(
-                                        Query.builder()
-                                            .table(ChapterTable.TABLE)
-                                            .where("${ChapterTable.COL_MANGA_ID} IN (${mergedMangas.filter { it.id != null }.joinToString { it.id.toString() }})")
-                                            .build()
-                                    )
-                                    .prepare()
-                                    .executeAsBlocking()
-                                val mergedMangaChapters = db.db.get()
-                                    .listOfObjects(Chapter::class.java)
-                                    .withQuery(
-                                        Query.builder()
-                                            .table(ChapterTable.TABLE)
-                                            .where("${ChapterTable.COL_MANGA_ID} IN (${loadedMangaList.filter { it.manga.id != null }.joinToString { it.manga.id.toString() }})")
-                                            .build()
-                                    )
-                                    .prepare()
-                                    .executeAsBlocking()
-                                val mergedMangaChaptersMatched = mergedMangaChapters.mapNotNull { chapter -> loadedMangaList.firstOrNull { it.manga.id == chapter.id }?.let { it to chapter } }
-                                val parsedChapters = chapters.filter { it.read || it.last_page_read != 0 }.mapNotNull { chapter -> readUrlConfig(chapter.url)?.let { chapter to it } }
-                                val chaptersToUpdate = mutableListOf<Chapter>()
-                                parsedChapters.forEach { parsedChapter ->
-                                    mergedMangaChaptersMatched.firstOrNull { it.second.url == parsedChapter.second.url && it.first.source.id == parsedChapter.second.source && it.first.manga.url == parsedChapter.second.mangaUrl }?.let {
-                                        chaptersToUpdate += it.second.apply {
-                                            read = parsedChapter.first.read
-                                            last_page_read = parsedChapter.first.last_page_read
-                                        }
-                                    }
-                                }
-                                db.deleteChapters(mergedMangaChapters).executeAsBlocking()
-                                db.updateChaptersProgress(chaptersToUpdate).executeAsBlocking()
-                            }
-                        }
-                    }
-                }
-                if (oldVersion under 12) {
-                    // Force MAL log out due to login flow change
-                    val trackManager = Injekt.get<TrackManager>()
-                    trackManager.myAnimeList.logout()
-                }
-                if (oldVersion under 14) {
-                    // Migrate DNS over HTTPS setting
-                    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-                    val wasDohEnabled = prefs.getBoolean("enable_doh", false)
-                    if (wasDohEnabled) {
-                        prefs.edit {
-                            putInt(PreferenceKeys.dohProvider, PREF_DOH_CLOUDFLARE)
-                            remove("enable_doh")
-                        }
-                    }
-                }
-                if (oldVersion under 16) {
-                    // Reset rotation to Free after replacing Lock
-                    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-                    if (prefs.contains("pref_rotation_type_key")) {
-                        prefs.edit {
-                            putInt("pref_rotation_type_key", 1)
-                        }
-                    }
-                }
-                if (oldVersion under 17) {
-                    // Migrate Rotation and Viewer values to default values for viewer_flags
-                    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-                    val newOrientation = when (prefs.getInt("pref_rotation_type_key", 1)) {
-                        1 -> OrientationType.FREE.flagValue
-                        2 -> OrientationType.PORTRAIT.flagValue
-                        3 -> OrientationType.LANDSCAPE.flagValue
-                        4 -> OrientationType.LOCKED_PORTRAIT.flagValue
-                        5 -> OrientationType.LOCKED_LANDSCAPE.flagValue
-                        else -> OrientationType.FREE.flagValue
-                    }
-
-                    // Reading mode flag and prefValue is the same value
-                    val newReadingMode = prefs.getInt("pref_default_viewer_key", 1)
-
-                    prefs.edit {
-                        putInt("pref_default_orientation_type_key", newOrientation)
-                        remove("pref_rotation_type_key")
-                        putInt("pref_default_reading_mode_key", newReadingMode)
-                        remove("pref_default_viewer_key")
-                    }
-
-                    // Delete old mangadex trackers
-                    db.db.lowLevel().delete(
-                        DeleteQuery.builder()
-                            .table(TrackTable.TABLE)
-                            .where("${TrackTable.COL_SYNC_ID} = ?")
-                            .whereArgs(6)
-                            .build()
-                    )
-                }
-                if (oldVersion under 18) {
-                    val readerTheme = preferences.readerTheme().get()
-                    if (readerTheme == 4) {
-                        preferences.readerTheme().set(3)
-                    }
-                    val updateInterval = preferences.libraryUpdateInterval().get()
-                    if (updateInterval == 1 || updateInterval == 2) {
-                        preferences.libraryUpdateInterval().set(3)
-                        LibraryUpdateJob.setupTask(context, 3)
-                    }
-                }
-                if (oldVersion under 20) {
-                    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-
-                    val oldSortingMode = prefs.getInt(PreferenceKeys.librarySortingMode, 0)
-                    val oldSortingDirection = prefs.getBoolean(PreferenceKeys.librarySortingDirection, true)
-
-                    @Suppress("DEPRECATION")
-                    val newSortingMode = when (oldSortingMode) {
-                        LibrarySort.ALPHA -> SortModeSetting.ALPHABETICAL
-                        LibrarySort.LAST_READ -> SortModeSetting.LAST_READ
-                        LibrarySort.LAST_CHECKED -> SortModeSetting.LAST_CHECKED
-                        LibrarySort.UNREAD -> SortModeSetting.UNREAD
-                        LibrarySort.TOTAL -> SortModeSetting.TOTAL_CHAPTERS
-                        LibrarySort.LATEST_CHAPTER -> SortModeSetting.LATEST_CHAPTER
-                        LibrarySort.CHAPTER_FETCH_DATE -> SortModeSetting.DATE_FETCHED
-                        LibrarySort.DATE_ADDED -> SortModeSetting.DATE_ADDED
-                        LibrarySort.DRAG_AND_DROP -> SortModeSetting.DRAG_AND_DROP
-                        LibrarySort.TAG_LIST -> SortModeSetting.TAG_LIST
-                        else -> SortModeSetting.ALPHABETICAL
-                    }
-
-                    val newSortingDirection = when (oldSortingDirection) {
-                        true -> SortDirectionSetting.ASCENDING
-                        else -> SortDirectionSetting.DESCENDING
-                    }
-
-                    prefs.edit(commit = true) {
-                        remove(PreferenceKeys.librarySortingMode)
-                        remove(PreferenceKeys.librarySortingDirection)
-                    }
-
-                    prefs.edit {
-                        putString(PreferenceKeys.librarySortingMode, newSortingMode.name)
-                        putString(PreferenceKeys.librarySortingDirection, newSortingDirection.name)
-                    }
-
-                    if (prefs.getString(PreferenceKeys.themeDark, null) == "amoledblue") {
-                        prefs.edit {
-                            putString(PreferenceKeys.themeDark, "amoled")
-                        }
-                    }
-                }
+                // Add migrations here in future
 
                 // if (oldVersion under 1) { } (1 is current release version)
                 // do stuff here when releasing changed crap

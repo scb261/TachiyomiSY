@@ -16,12 +16,6 @@ plugins {
     id("realm-android")
 }
 
-if (!gradle.startParameter.taskRequests.toString().contains("Debug")) {
-    apply(plugin = "com.google.gms.google-services")
-    // Firebase Crashlytics
-    apply(plugin = "com.google.firebase.crashlytics")
-}
-
 shortcutHelper.setFilePath("./shortcuts.xml")
 
 android {
@@ -30,12 +24,12 @@ android {
     ndkVersion = AndroidConfig.ndk
 
     defaultConfig {
-        applicationId = "eu.kanade.tachiyomi.sy"
+        applicationId = "eu.kanade.tachiyomi.xzm"
         minSdkVersion(AndroidConfig.minSdk)
         targetSdkVersion(AndroidConfig.targetSdk)
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        versionCode = 20
-        versionName = "1.7.0"
+        versionCode = 1
+        versionName = "xzm-1.0.0"
 
         buildConfigField("String", "COMMIT_COUNT", "\"${getCommitCount()}\"")
         buildConfigField("String", "COMMIT_SHA", "\"${getGitSha()}\"")
@@ -76,9 +70,6 @@ android {
     productFlavors {
         create("standard") {
             buildConfigField("boolean", "INCLUDE_UPDATER", "true")
-            dimension = "default"
-        }
-        create("fdroid") {
             dimension = "default"
         }
         create("dev") {
