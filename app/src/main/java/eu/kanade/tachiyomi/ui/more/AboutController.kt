@@ -103,7 +103,7 @@ class AboutController : SettingsController(), NoToolbarElevationController {
     private fun checkVersion() {
         if (activity == null) return
 
-        if (Build.VERSION.SDK_INT under Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT under Build.VERSION_CODES.LOLLIPOP) {
             activity?.toast(R.string.update_check_eol)
             return
         }
