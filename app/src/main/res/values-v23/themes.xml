@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.V23.Theme.Tachiyomi.Light" parent="Base.Theme.Tachiyomi.Light">
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-        <item name="android:windowLightStatusBar">true</item>
+    <style name="Base.V23.Tachiyomi" parent="Base.Theme.Tachiyomi">
+        <item name="android:windowLightStatusBar">@bool/lightStatusBar</item>
     </style>
 
-    <style name="Theme.Tachiyomi.Light" parent="Base.V23.Theme.Tachiyomi.Light" />
+    <style name="Theme.Tachiyomi" parent="Base.V23.Tachiyomi" />
 </resources>
