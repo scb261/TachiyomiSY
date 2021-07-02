@@ -16,6 +16,7 @@ import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.online.all.Hitomi
 import eu.kanade.tachiyomi.source.online.all.NHentai
+import exh.eh.EHentaiUpdateWorker
 import exh.log.xLogE
 import exh.log.xLogW
 import exh.source.BlacklistedSources
@@ -25,6 +26,7 @@ import exh.source.PERV_EDEN_EN_SOURCE_ID
 import exh.source.PERV_EDEN_IT_SOURCE_ID
 import exh.source.TSUMINO_SOURCE_ID
 import exh.util.over
+import exh.util.under
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -62,7 +64,10 @@ object EXHMigrations {
                     return false
                 }
 
-                // Add migrations here in future
+                if (oldVersion under 2) {
+                    // Setup EH updater task after migrating to WorkManager
+                    EHentaiUpdateWorker.scheduleBackground(context)
+                }
 
                 // if (oldVersion under 1) { } (1 is current release version)
                 // do stuff here when releasing changed crap
