@@ -17,7 +17,7 @@ body:
           required: true
         - label: I have tried the [troubleshooting guide](https://tachiyomi.org/help/guides/troubleshooting/).
           required: true
-        - label: I have updated the app to version **[1.0.0](https://github.com/scb261/tachiyomixzm/releases/tag/xzm-1.0.0)**.
+        - label: I have updated the app to version **[1.0.1](https://github.com/scb261/tachiyomixzm/releases/tag/xzm-1.0.1)**.
           required: true
         - label: I have updated all installed extensions.
           required: true
@@ -30,7 +30,7 @@ body:
       label: Tachiyomi version
       description: You can find your Tachiyomi version in **More → About**.
       placeholder: |
-        Example: "1.0.0"
+        Example: "1.0.1"
     validations:
       required: true
 

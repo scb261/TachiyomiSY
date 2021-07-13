@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog bulletedList="true">
+    <changelogversion versionName="1.0.1" changeDate="July 13,2021">
+        <changelogtext>[b]Based on TachiyomiSY r393(from r387)[/b]</changelogtext>
+        <changelogtext>Fix red color when selecting manga in library (ignore current theme and use default selection color)</changelogtext>
+    </changelogversion>
     <changelogversion versionName="1.0.0" changeDate="July 1,2021">
-        <changelogtext>First release of TachiyomiXZM - fork of TachiyomiSY with Android 5.x support</changelogtext>
+        <changelogtext>[b]First release of TachiyomiXZM[/b]</changelogtext>
+        <changelogtext>[b]Based on TachiyomiSY r387[/b]</changelogtext>
+        <changelogtext>[b]Add Android 5.x support back[/b]</changelogtext>
+        <changelogtext>Remove animations from bottom navigation bar</changelogtext>
+        <changelogtext>Set dark theme as default</changelogtext>
+        <changelogtext>Option to disable "Sync EH favorites" and remove overflow from Library screen</changelogtext>
     </changelogversion>
 </changelog>
