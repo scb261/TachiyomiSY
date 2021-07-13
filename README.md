@@ -29,4 +29,3 @@ See [Tachiyomi help center](https://tachiyomi.org/help/) for Tachiyomi FAQ and t
 ## TODO
 
 * Change app icon
-* Update issues template
