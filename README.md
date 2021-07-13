@@ -1,5 +1,5 @@
 # TachiyomiXZM
-Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly reccomend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or a [fork](https://tachiyomi.org/forks/) that is not TachiyomiXZM if you have Android 6.0 or above.
+Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or [a fork](https://tachiyomi.org/forks/) that is not TachiyomiXZM if you have Android 6.0 or above.
 
 For now I will cherry-pick new commits once in a while.
 
@@ -16,7 +16,7 @@ Get the app from [releases page](https://github.com/scb261/TachiyomiXZM/releases
 
 ## Issues, Feature Requests and Contributing
 
-**Feture requests** will not be implemented except features I want personally. Ask for them in Tachiyomi or TachiyomiSY, and I may or may not cherry pick it from there.
+**Feature requests** will not be implemented except features I want personally. Ask for them in Tachiyomi or TachiyomiSY, and I may or may not cherry pick it from there.
 
 **Bug reports** are welcome, but I don't promise any fixes due to my limited knowledge in Android apps.
 
@@ -24,7 +24,7 @@ Get the app from [releases page](https://github.com/scb261/TachiyomiXZM/releases
 
 ## FAQ
 
-See [Tachiyomi help center](https://tachiyomi.org/help/) for FAQ related to Tachiyomi and troubleshooting problems. If you have any questions related to TachiyomiXZM - you can contact me on Discord - scb261#3238 (though I may answer with some delay).
+See [Tachiyomi help center](https://tachiyomi.org/help/) for Tachiyomi FAQ and troubleshooting problems. If you have any questions related to TachiyomiXZM - you can contact me on Discord - scb261#3238 (though I may answer with some delay).
 
 ## TODO
 
