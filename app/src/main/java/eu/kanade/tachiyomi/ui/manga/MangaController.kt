@@ -1020,7 +1020,7 @@ class MangaController :
         }
     }
 
-    private fun shareCover() {
+    fun shareCover() {
         try {
             val activity = activity!!
             val cover = presenter.shareCover(activity)
@@ -1032,7 +1032,7 @@ class MangaController :
         }
     }
 
-    private fun saveCover() {
+    fun saveCover() {
         try {
             presenter.saveCover(activity!!)
             activity?.toast(R.string.cover_saved)
