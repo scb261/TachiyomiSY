@@ -419,10 +419,6 @@ class SettingsAdvancedController : SettingsController() {
     }
 
     class ClearDatabaseDialogController : DialogController() {
-        // SY -->
-        var keepReadManga = false
-        // SY <--
-
         override fun onCreateDialog(savedViewState: Bundle?): Dialog {
             val item = arrayOf(
                 activity!!.getString(R.string.clear_db_exclude_read)
@@ -430,6 +426,7 @@ class SettingsAdvancedController : SettingsController() {
             val selected = booleanArrayOf(true)
             return MaterialAlertDialogBuilder(activity!!)
                 .setMessage(R.string.clear_database_confirmation)
+                // SY -->
                 .setMultiChoiceItems(item, selected) { _, _, isChecked ->
                     selected[0] = isChecked
                 }
