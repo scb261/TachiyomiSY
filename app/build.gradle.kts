@@ -19,13 +19,13 @@ plugins {
 shortcutHelper.setFilePath("./shortcuts.xml")
 
 android {
-    compileSdkVersion(AndroidConfig.compileSdk)
+    compileSdk = AndroidConfig.compileSdk
     ndkVersion = AndroidConfig.ndk
 
     defaultConfig {
         applicationId = "eu.kanade.tachiyomi.xzm"
-        minSdkVersion(AndroidConfig.minSdk)
-        targetSdkVersion(AndroidConfig.targetSdk)
+        minSdk = AndroidConfig.minSdk
+        targetSdk = AndroidConfig.targetSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         versionCode = 2
         versionName = "xzm-1.0.1"
@@ -38,10 +38,6 @@ android {
         ndk {
             abiFilters += setOf("armeabi-v7a", "arm64-v8a", "x86")
         }
-    }
-
-    buildFeatures {
-        viewBinding = true
     }
 
     buildTypes {
@@ -91,7 +87,11 @@ android {
         includeInApk = false
     }
 
-    lintOptions {
+    buildFeatures {
+        viewBinding = true
+    }
+
+    lint {
         disable("MissingTranslation", "ExtraTranslation")
         isAbortOnError = false
         isCheckReleaseBuilds = false
@@ -124,7 +124,7 @@ dependencies {
     implementation("androidx.biometric:biometric-ktx:1.2.0-alpha03")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0-beta02")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0-rc01")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
     implementation("androidx.core:core-ktx:1.7.0-alpha01")
     implementation("androidx.preference:preference-ktx:1.1.1")
