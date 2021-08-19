@@ -25,10 +25,11 @@
     <View
         android:id="@+id/backdrop_overlay"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="0dp"
         android:background="@drawable/manga_backdrop_gradient"
         android:backgroundTint="?android:attr/colorBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/backdrop" />
+        app:layout_constraintBottom_toBottomOf="@+id/backdrop"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/manga_cover"

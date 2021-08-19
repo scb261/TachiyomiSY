@@ -9,6 +9,7 @@ import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import eu.kanade.tachiyomi.ui.base.changehandler.OneWayFadeChangeHandler
 import eu.kanade.tachiyomi.util.system.openInBrowser
+import eu.kanade.tachiyomi.ui.main.MainActivity
 
 fun Router.popControllerWithTag(tag: String): Boolean {
     val controller = getControllerWithTag(tag)
@@ -38,4 +39,11 @@ fun Controller.withFadeTransaction(): RouterTransaction {
 
 fun Controller.openInBrowser(url: String) {
     activity?.openInBrowser(url.toUri())
+}
+
+/**
+ * Returns [MainActivity]'s app bar height
+ */
+fun Controller.getMainAppBarHeight(): Int {
+    return (activity as? MainActivity)?.binding?.appbar?.measuredHeight ?: 0
 }
