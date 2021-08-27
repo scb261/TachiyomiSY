@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import coil.loadAny
 import coil.target.ImageViewTarget
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.davidea.flexibleadapter.FlexibleAdapter
@@ -21,7 +20,9 @@ import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.source.online.MetadataSource
 import eu.kanade.tachiyomi.ui.manga.MangaController
 import eu.kanade.tachiyomi.util.lang.launchUI
+import eu.kanade.tachiyomi.util.system.applySystemAnimatorScale
 import eu.kanade.tachiyomi.util.system.copyToClipboard
+import eu.kanade.tachiyomi.util.view.loadAnyAutoPause
 import eu.kanade.tachiyomi.util.view.setChips
 import exh.merged.sql.models.MergedMangaReference
 import exh.metadata.metadata.base.RaisedSearchMetadata
@@ -122,6 +123,12 @@ class MangaInfoHeaderAdapter(
 
     inner class HeaderViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind() {
+            val headerTransition = binding.root.getTransition(R.id.manga_info_header_transition)
+            headerTransition.applySystemAnimatorScale(view.context)
+
+            val summaryTransition = binding.mangaSummarySection.getTransition(R.id.manga_summary_section_transition)
+            summaryTransition.applySystemAnimatorScale(view.context)
+
             // For rounded corners
             binding.mangaCover.clipToOutline = true
 
@@ -349,8 +356,8 @@ class MangaInfoHeaderAdapter(
             setFavoriteButtonState(manga.favorite)
 
             // Set cover if changed.
-            binding.backdrop.loadAny(manga)
-            binding.mangaCover.loadAny(manga) {
+            binding.backdrop.loadAnyAutoPause(manga)
+            binding.mangaCover.loadAnyAutoPause(manga) {
                 listener(
                     onSuccess = { request, _ ->
                         (request.target as? ImageViewTarget)?.drawable?.let { drawable ->
