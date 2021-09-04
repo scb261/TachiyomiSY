@@ -65,6 +65,9 @@ android {
             buildConfigField("boolean", "INCLUDE_UPDATER", "true")
             dimension = "default"
         }
+        create("fdroid") {
+            dimension = "default"
+        }
         create("dev") {
             resConfigs("en", "xxhdpi")
             dimension = "default"
