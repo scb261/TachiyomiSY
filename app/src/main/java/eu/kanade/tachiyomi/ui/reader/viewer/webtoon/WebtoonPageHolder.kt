@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.ui.reader.viewer.webtoon
 
+import android.annotation.SuppressLint
 import android.content.res.Resources
 import android.graphics.drawable.Animatable
 import android.view.Gravity
@@ -13,8 +14,6 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
 import coil.clear
 import coil.imageLoader
 import coil.request.CachePolicy
@@ -24,7 +23,7 @@ import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
-import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
+import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.system.ImageUtil
 import eu.kanade.tachiyomi.util.system.dpToPx
@@ -51,7 +50,7 @@ class WebtoonPageHolder(
     /**
      * Loading progress bar to indicate the current progress.
      */
-    private val progressIndicator = createProgressIndicator()
+    private val progressBar = createProgressBar()
 
     /**
      * Progress bar container. Needed to keep a minimum height size of the holder, otherwise the
@@ -145,7 +144,7 @@ class WebtoonPageHolder(
         subsamplingImageView?.isVisible = false
         imageView?.clear()
         imageView?.isVisible = false
-        progressIndicator.setProgress(0, animated = false)
+        progressBar.setProgress(0)
     }
 
     /**
@@ -178,7 +177,7 @@ class WebtoonPageHolder(
             .distinctUntilChanged()
             .onBackpressureLatest()
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { value -> progressIndicator.setProgress(value) }
+            .subscribe { value -> progressBar.setProgress(value) }
 
         addSubscription(progressSubscription)
     }
@@ -236,7 +235,7 @@ class WebtoonPageHolder(
      */
     private fun setQueued() {
         progressContainer.isVisible = true
-        progressIndicator.show()
+        progressBar.isVisible = true
         retryContainer?.isVisible = false
         removeDecodeErrorLayout()
     }
@@ -246,7 +245,7 @@ class WebtoonPageHolder(
      */
     private fun setLoading() {
         progressContainer.isVisible = true
-        progressIndicator.show()
+        progressBar.isVisible = true
         retryContainer?.isVisible = false
         removeDecodeErrorLayout()
     }
@@ -256,7 +255,7 @@ class WebtoonPageHolder(
      */
     private fun setDownloading() {
         progressContainer.isVisible = true
-        progressIndicator.show()
+        progressBar.isVisible = true
         retryContainer?.isVisible = false
         removeDecodeErrorLayout()
     }
@@ -266,8 +265,8 @@ class WebtoonPageHolder(
      */
     private fun setImage() {
         progressContainer.isVisible = true
-        progressIndicator.setProgress(100)
-        progressIndicator.hide()
+        progressBar.isVisible = true
+        progressBar.completeAndFadeOut()
         retryContainer?.isVisible = false
         removeDecodeErrorLayout()
 
@@ -343,14 +342,16 @@ class WebtoonPageHolder(
     /**
      * Creates a new progress bar.
      */
-    private fun createProgressIndicator(): ReaderProgressIndicator {
+    @SuppressLint("PrivateResource")
+    private fun createProgressBar(): ReaderProgressBar {
         progressContainer = FrameLayout(context)
         frame.addView(progressContainer, MATCH_PARENT, parentHeight)
 
-        val progress = ReaderProgressIndicator(context).apply {
-            updateLayoutParams<FrameLayout.LayoutParams> {
+        val progress = ReaderProgressBar(context).apply {
+            val size = 48.dpToPx
+            layoutParams = FrameLayout.LayoutParams(size, size).apply {
                 gravity = Gravity.CENTER_HORIZONTAL
-                updateMargins(top = parentHeight / 4)
+                setMargins(0, parentHeight / 4, 0, 0)
             }
         }
         progressContainer.addView(progress)

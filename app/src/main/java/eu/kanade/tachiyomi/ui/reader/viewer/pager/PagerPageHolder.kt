@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
 import coil.imageLoader
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -26,7 +25,7 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.InsertPage
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
-import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
+import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
 import eu.kanade.tachiyomi.ui.reader.viewer.pager.PagerConfig.ZoomType
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.lang.launchUI
@@ -65,11 +64,7 @@ class PagerPageHolder(
     /**
      * Loading progress bar to indicate the current progress.
      */
-    private val progressIndicator = ReaderProgressIndicator(context).apply {
-        updateLayoutParams<LayoutParams> {
-            gravity = Gravity.CENTER
-        }
-    }
+    private val progressBar = createProgressBar()
 
     /**
      * Image view that supports subsampling on zoom.
@@ -127,7 +122,7 @@ class PagerPageHolder(
     // SY <--
 
     init {
-        addView(progressIndicator)
+        addView(progressBar)
         scope = CoroutineScope(Job() + Dispatchers.Default)
         observeStatus()
     }
@@ -183,7 +178,7 @@ class PagerPageHolder(
             .distinctUntilChanged()
             .onBackpressureLatest()
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { value -> progressIndicator.setProgress(value) }
+            .subscribe { value -> progressBar.setProgress(value) }
     }
 
     private fun observeProgress2() {
@@ -196,7 +191,7 @@ class PagerPageHolder(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { value ->
                 extraProgress = value
-                progressIndicator.setProgress(((progress + extraProgress) / 2 * 0.95f).roundToInt())
+                progressBar.setProgress(((progress + extraProgress) / 2 * 0.95f).roundToInt())
             }
     }
 
@@ -282,7 +277,7 @@ class PagerPageHolder(
      * Called when the page is queued.
      */
     private fun setQueued() {
-        progressIndicator.show()
+        progressBar.isVisible = true
         retryButton?.isVisible = false
         decodeErrorLayout?.isVisible = false
     }
@@ -291,7 +286,7 @@ class PagerPageHolder(
      * Called when the page is loading.
      */
     private fun setLoading() {
-        progressIndicator.show()
+        progressBar.isVisible = true
         retryButton?.isVisible = false
         decodeErrorLayout?.isVisible = false
     }
@@ -300,7 +295,7 @@ class PagerPageHolder(
      * Called when the page is downloading.
      */
     private fun setDownloading() {
-        progressIndicator.show()
+        progressBar.isVisible = true
         retryButton?.isVisible = false
         decodeErrorLayout?.isVisible = false
     }
@@ -309,13 +304,12 @@ class PagerPageHolder(
      * Called when the page is ready.
      */
     private fun setImage() {
-        progressIndicator.isVisible = true
-        progressIndicator.isVisible = true
+        progressBar.isVisible = true
+        progressBar.isVisible = true
         if (extraPage == null) {
-            progressIndicator.setProgress(100)
-            progressIndicator.hide()
+            progressBar.completeAndFadeOut()
         } else {
-            progressIndicator.setProgress(95)
+            progressBar.setProgress(95)
         }
         retryButton?.isVisible = false
         decodeErrorLayout?.isVisible = false
@@ -402,7 +396,7 @@ class PagerPageHolder(
             Timber.e("Cannot combine pages ${e.message}")
             return imageBytes.inputStream()
         }
-        scope?.launchUI { progressIndicator.setProgress(96) }
+        scope?.launchUI { progressBar.setProgress(96) }
         val height = imageBitmap.height
         val width = imageBitmap.width
 
@@ -426,7 +420,7 @@ class PagerPageHolder(
             Timber.e("Cannot combine pages ${e.message}")
             return imageBytes.inputStream()
         }
-        scope?.launchUI { progressIndicator.setProgress(97) }
+        scope?.launchUI { progressBar.setProgress(97) }
         val height2 = imageBitmap2.height
         val width2 = imageBitmap2.width
 
@@ -445,10 +439,9 @@ class PagerPageHolder(
         return ImageUtil.mergeBitmaps(imageBitmap, imageBitmap2, isLTR, viewer.config.pageCanvasColor) {
             scope?.launchUI {
                 if (it == 100) {
-                    progressIndicator.setProgress(100)
-                    progressIndicator.hide()
+                    progressBar.completeAndFadeOut()
                 } else {
-                    progressIndicator.setProgress(it)
+                    progressBar.setProgress(it)
                 }
             }
         }
@@ -482,7 +475,7 @@ class PagerPageHolder(
      * Called when the page has an error.
      */
     private fun setError() {
-        progressIndicator.hide()
+        progressBar.isVisible = false
         initRetryButton().isVisible = true
     }
 
@@ -490,15 +483,28 @@ class PagerPageHolder(
      * Called when the image is decoded and going to be displayed.
      */
     private fun onImageDecoded() {
-        progressIndicator.hide()
+        progressBar.isVisible = false
     }
 
     /**
      * Called when an image fails to decode.
      */
     private fun onImageDecodeError() {
-        progressIndicator.hide()
+        progressBar.isVisible = false
         initDecodeErrorLayout().isVisible = true
+    }
+
+    /**
+     * Creates a new progress bar.
+     */
+    @SuppressLint("PrivateResource")
+    private fun createProgressBar(): ReaderProgressBar {
+        return ReaderProgressBar(context, null).apply {
+            val size = 48.dpToPx
+            layoutParams = LayoutParams(size, size).apply {
+                gravity = Gravity.CENTER
+            }
+        }
     }
 
     /**
