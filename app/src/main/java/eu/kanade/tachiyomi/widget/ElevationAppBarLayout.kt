@@ -2,7 +2,6 @@ package eu.kanade.tachiyomi.widget
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import com.google.android.material.animation.AnimationUtils
 import com.google.android.material.appbar.AppBarLayout
