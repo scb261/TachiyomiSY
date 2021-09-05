@@ -34,6 +34,7 @@ class ReaderTransitionView @JvmOverloads constructor(context: Context, attrs: At
         missingChapterWarning(transition)
 
         val color = when (Injekt.get<PreferencesHelper>().readerTheme().get()) {
+            // getColor from upstream isn't supported in API <= 22
             0 -> ContextCompat.getColor(context, android.R.color.black)
             3 -> ContextCompat.getColor(context, automaticTextColor())
             else -> ContextCompat.getColor(context, android.R.color.white)

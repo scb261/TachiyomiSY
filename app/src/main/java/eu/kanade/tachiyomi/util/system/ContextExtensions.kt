@@ -96,7 +96,8 @@ fun Context.copyToClipboard(label: String, content: String) {
  */
 fun Context.notificationBuilder(channelId: String, block: (NotificationCompat.Builder.() -> Unit)? = null): NotificationCompat.Builder {
     val builder = NotificationCompat.Builder(this, channelId)
-        .setColor(getColor(R.color.accent_blue))
+        // getColor from upstream isn't supported in API <= 22
+        .setColor(ContextCompat.getColor(this, R.color.accent_blue))
     if (block != null) {
         builder.block()
     }
@@ -146,7 +147,8 @@ fun Context.hasPermission(permission: String) = ContextCompat.checkSelfPermissio
     val tv = TypedValue()
     return if (this.theme.resolveAttribute(attr, tv, true)) {
         if (tv.resourceId != 0) {
-            getColor(tv.resourceId)
+            // getColor from upstream isn't supported in API <= 22
+            ContextCompat.getColor(this, tv.resourceId)
         } else {
             tv.data
         }

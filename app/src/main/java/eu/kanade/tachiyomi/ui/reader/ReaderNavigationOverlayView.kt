@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewPropertyAnimator
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.withSave
 import androidx.core.view.isVisible
 import eu.kanade.tachiyomi.ui.reader.viewer.ViewerNavigation
@@ -65,12 +66,12 @@ class ReaderNavigationOverlayView(context: Context, attributeSet: AttributeSet) 
             canvas?.withSave {
                 // Scale rect from 1f,1f to screen width and height
                 scale(width.toFloat(), height.toFloat())
-                regionPaint.color = context.getColor(region.type.colorRes)
+                // getColor from upstream isn't supported in API <= 22
+                regionPaint.color = ContextCompat.getColor(context, region.type.colorRes)
                 drawRect(rect, regionPaint)
             }
             // Don't want scale anymore because it messes with drawText
             canvas?.withSave {
-
                 // Translate origin to rect start (left, top)
                 translate((width * rect.left), (height * rect.top))
 
