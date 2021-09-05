@@ -25,7 +25,3 @@ Get the app from [releases page](https://github.com/scb261/TachiyomiXZM/releases
 ## FAQ
 
 See [Tachiyomi help center](https://tachiyomi.org/help/) for Tachiyomi FAQ and troubleshooting problems. If you have any questions related to TachiyomiXZM - you can contact me on Discord - scb261#3238 (though I may answer with some delay).
-
-## TODO
-
-* Change app icon
