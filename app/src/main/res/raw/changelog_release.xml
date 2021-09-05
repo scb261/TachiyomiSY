@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog bulletedList="true">
+    <changelogversion versionName="1.1.0" changeDate="September 6,2021">
+        <changelogtext>[b]New icon[/b]</changelogtext>
+        <changelogtext>[b]Based on TachiyomiSY r405+(from r393)[/b]</changelogtext>
+        <changelogtext>Some commits were skipped due to issues in Android 5.x</changelogtext>
+        <changelogtext>Few commits after r405 were also cherry picked</changelogtext>
+    </changelogversion>
     <changelogversion versionName="1.0.1" changeDate="July 13,2021">
         <changelogtext>[b]Based on TachiyomiSY r393(from r387)[/b]</changelogtext>
         <changelogtext>Fix red color when selecting manga in library (ignore current theme and use default selection color)</changelogtext>
