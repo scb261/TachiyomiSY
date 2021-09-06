@@ -93,7 +93,7 @@ android {
         viewBinding = true
     }
 
-    lint {
+    lintOptions {
         disable("MissingTranslation", "ExtraTranslation")
         isAbortOnError = false
         isCheckReleaseBuilds = false
