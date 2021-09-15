@@ -1,9 +1,11 @@
 package eu.kanade.tachiyomi.widget.materialdialogs
 
 import android.content.Context
-import android.content.res.ColorStateList
+import android.graphics.PorterDuff
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.util.system.getThemeColor
 
@@ -23,16 +25,19 @@ class QuadStateTextView @JvmOverloads constructor(context: Context, attrs: Attri
             State.CHECKED -> R.drawable.ic_check_box_24dp
             State.INVERSED -> R.drawable.ic_check_box_x_24dp
         }
-        setCompoundDrawablesRelativeWithIntrinsicBounds(drawableStartId, 0, 0, 0)
 
         val tint = if (state == State.UNCHECKED) {
             context.getThemeColor(R.attr.colorControlNormal)
         } else {
             context.getThemeColor(R.attr.colorAccent)
         }
-        if (tint != 0) {
-            compoundDrawableTintList = ColorStateList.valueOf(tint)
-        }
+
+        // compoundDrawableTintList from upstream isn't supported in API < 23
+        val drawable = ContextCompat.getDrawable(context, drawableStartId)!!
+        DrawableCompat.setTint(drawable, tint)
+        DrawableCompat.setTintMode(drawable, PorterDuff.Mode.SRC_ATOP)
+
+        setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, null, null, null)
     }
 
     enum class State {
