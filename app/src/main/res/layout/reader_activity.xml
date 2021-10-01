@@ -14,7 +14,8 @@
         <FrameLayout
             android:id="@+id/viewer_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/please_wait"
