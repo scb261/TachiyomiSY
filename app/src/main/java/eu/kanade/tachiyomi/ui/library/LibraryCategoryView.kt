@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import dev.chrisbanes.insetter.applyInsetter
+import dev.chrisbanes.insetter.Insetter
+import dev.chrisbanes.insetter.windowInsetTypesOf
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.SelectableAdapter
 import eu.kanade.tachiyomi.R
@@ -39,7 +40,6 @@ import rx.subscriptions.CompositeSubscription
 import uy.kohesive.injekt.injectLazy
 import java.util.ArrayDeque
 import java.util.concurrent.TimeUnit
-import eu.kanade.tachiyomi.ui.library.setting.DisplayModeSetting as DisplayMode
 
 /**
  * Fragment containing the library manga for a certain category.
@@ -91,12 +91,10 @@ class LibraryCategoryView @JvmOverloads constructor(context: Context, attrs: Att
     private var initialLoadHandle: LoadingHandle? = null
     // EXH <--
 
-    fun onCreate(controller: LibraryController, binding: LibraryCategoryBinding) {
+    fun onCreate(controller: LibraryController, binding: LibraryCategoryBinding, viewType: Int) {
         this.controller = controller
 
-        recycler = if (preferences.libraryDisplayMode().get() == DisplayMode.LIST &&
-            !preferences.categorisedDisplaySettings().get()
-        ) {
+        recycler = if (viewType == LibraryAdapter.LIST_DISPLAY_MODE) {
             (binding.swipeRefresh.inflate(R.layout.library_list_recycler) as AutofitRecyclerView).apply {
                 spanCount = 1
             }
@@ -106,11 +104,9 @@ class LibraryCategoryView @JvmOverloads constructor(context: Context, attrs: Att
             }
         }
 
-        recycler.applyInsetter {
-            type(navigationBars = true) {
-                padding()
-            }
-        }
+        Insetter.builder()
+            .paddingBottom(windowInsetTypesOf(navigationBars = true))
+            .applyToView(recycler)
 
         adapter = LibraryCategoryAdapter(this, controller)
 
@@ -157,15 +153,6 @@ class LibraryCategoryView @JvmOverloads constructor(context: Context, attrs: Att
 
     fun onBind(category: Category) {
         this.category = category
-
-        // If displayMode should be set from category adjust manga count per row
-        if (preferences.categorisedDisplaySettings().get()) {
-            recycler.spanCount = if (DisplayMode.fromFlag(category.displayMode) == DisplayMode.LIST || (preferences.libraryDisplayMode().get() == DisplayMode.LIST && category.id == 0)) {
-                1
-            } else {
-                controller.mangaPerRow
-            }
-        }
 
         adapter.mode = if (controller.selectedMangas.isNotEmpty()) {
             SelectableAdapter.Mode.MULTI
