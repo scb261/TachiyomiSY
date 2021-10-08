@@ -7,7 +7,8 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.base.activity.BaseThemedActivity
 import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
 //import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
-import timber.log.Timber
+import eu.kanade.tachiyomi.util.system.logcat
+import logcat.LogPriority
 import java.util.Date
 
 // XZM -->
@@ -30,7 +31,7 @@ class UnlockActivity : BaseThemedActivity() {
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Timber.e(errString.toString())
+                    logcat(LogPriority.ERROR) { errString.toString() }
                     finishAffinity()
                 }
 

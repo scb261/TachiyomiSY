@@ -21,15 +21,16 @@ import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.lang.launchUI
 import eu.kanade.tachiyomi.util.system.ImageUtil
 import eu.kanade.tachiyomi.util.system.dpToPx
+import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.widget.ViewPagerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import logcat.LogPriority
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import timber.log.Timber
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.util.concurrent.TimeUnit
@@ -436,7 +437,7 @@ class PagerPageHolder(
             imageStream.close()
             page.fullPage = true
             skipExtra = true
-            Timber.e("Cannot combine pages ${e.message}")
+            logcat(LogPriority.ERROR, e) { "Cannot combine pages" }
             return imageBytes.inputStream()
         }
         scope?.launchUI { progressBar.setProgress(96) }
@@ -460,7 +461,7 @@ class PagerPageHolder(
             extraPage?.fullPage = true
             skipExtra = true
             page.isolatedPage = true
-            Timber.e("Cannot combine pages ${e.message}")
+            logcat(LogPriority.ERROR, e) { "Cannot combine pages" }
             return imageBytes.inputStream()
         }
         scope?.launchUI { progressBar.setProgress(97) }
