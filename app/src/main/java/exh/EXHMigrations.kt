@@ -56,6 +56,7 @@ import java.net.URISyntaxException
 
 // XZM -->
 import android.os.Build
+import eu.kanade.tachiyomi.data.preference.plusAssign
 import exh.util.over
 // XZM <--
 
@@ -96,6 +97,11 @@ object EXHMigrations {
                     // if (preferences.lang().get() in listOf("en-US", "en-GB")) {
                     //    preferences.lang().set("en")
                     // }
+                }
+                if (oldVersion under 6) {
+                    if (preferences.enabledLanguages().isSet()) {
+                        preferences.enabledLanguages() += "all"
+                    }
                 }
 
                 // if (oldVersion under 1) { } (1 is current release version)
