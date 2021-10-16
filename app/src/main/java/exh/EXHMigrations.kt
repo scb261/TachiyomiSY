@@ -19,7 +19,7 @@ import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
 //import eu.kanade.tachiyomi.data.preference.PreferenceKeys
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 //import eu.kanade.tachiyomi.data.track.TrackManager
-import eu.kanade.tachiyomi.data.updater.UpdaterJob
+import eu.kanade.tachiyomi.data.updater.AppUpdateJob
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
 //import eu.kanade.tachiyomi.network.PREF_DOH_CLOUDFLARE
 import eu.kanade.tachiyomi.source.Source
@@ -78,7 +78,7 @@ object EXHMigrations {
                 preferences.ehLastVersionCode().set(BuildConfig.VERSION_CODE)
 
                 if (BuildConfig.INCLUDE_UPDATER && Build.VERSION.SDK_INT over Build.VERSION_CODES.LOLLIPOP_MR1) {
-                    UpdaterJob.setupTask(context)
+                    AppUpdateJob.setupTask(context)
                 }
                 ExtensionUpdateJob.setupTask(context)
                 LibraryUpdateJob.setupTask(context)
