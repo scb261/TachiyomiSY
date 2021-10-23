@@ -14,6 +14,10 @@ import eu.kanade.tachiyomi.util.system.openInBrowser
 import android.os.Build
 // XZM <--
 
+fun Router.setRoot(controller: Controller, id: Int) {
+    setRoot(controller.withFadeTransaction().tag(id.toString()))
+}
+
 fun Router.popControllerWithTag(tag: String): Boolean {
     val controller = getControllerWithTag(tag)
     if (controller != null) {

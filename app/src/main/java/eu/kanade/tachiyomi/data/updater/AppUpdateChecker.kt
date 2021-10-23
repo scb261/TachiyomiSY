@@ -11,22 +11,22 @@ import eu.kanade.tachiyomi.util.lang.withIOContext
 // import exh.syDebugVersion
 import uy.kohesive.injekt.injectLazy
 import java.util.Date
+import java.util.concurrent.TimeUnit
 
 class AppUpdateChecker {
 
     private val networkService: NetworkHelper by injectLazy()
     private val preferences: PreferencesHelper by injectLazy()
 
-    private val repo: String by lazy {
-        // Sy -->
-        "scb261/TachiyomiXZM"
-        // SY <--
-    }
-
     suspend fun checkForUpdate(context: Context): AppUpdateResult {
+        // Limit checks to once a day at most
+        if (Date().time < preferences.lastAppCheck().get() + TimeUnit.DAYS.toMillis(1)) {
+            return AppUpdateResult.NoNewUpdate
+        }
+
         return withIOContext {
             val result = networkService.client
-                .newCall(GET("https://api.github.com/repos/$repo/releases/latest"))
+                .newCall(GET("https://api.github.com/repos/$GITHUB_REPO/releases/latest"))
                 .await()
                 .parseAs<GithubRelease>()
                 .let {
@@ -66,4 +66,10 @@ class AppUpdateChecker {
             newVersion != BuildConfig.VERSION_NAME
         }
     }
+}
+
+val GITHUB_REPO: String by lazy {
+    // XZM -->
+    "scb261/TachiyomiXZM"
+    // XZM <--
 }
