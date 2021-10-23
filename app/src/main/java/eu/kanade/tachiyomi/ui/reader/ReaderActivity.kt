@@ -432,9 +432,17 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
                 isScrollingThroughPages = false
             }
         }
+        val onChangeListener = Slider.OnChangeListener { slider, value, fromUser ->
+            if (viewer != null && fromUser) {
+                isScrollingThroughPages = true
+                moveToPageIndex(value.toInt())
+                slider.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+            }
+        }
         listOf(binding.pageSlider, binding.pageSliderVert)
             .forEach {
                 it.addOnSliderTouchListener(listener)
+                it.addOnChangeListener(onChangeListener)
             }
         // SY <--
 
