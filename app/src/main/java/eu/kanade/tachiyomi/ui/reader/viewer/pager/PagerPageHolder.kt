@@ -26,6 +26,7 @@ import eu.kanade.tachiyomi.widget.ViewPagerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import logcat.LogPriority
 import rx.Observable
 import rx.Subscription
@@ -145,7 +146,6 @@ class PagerPageHolder(
     var extraStatus: Int = 0
     var progress: Int = 0
     var extraProgress: Int = 0
-    private var skipExtra = false
     var scope: CoroutineScope? = null
     // SY <--
 
@@ -421,12 +421,12 @@ class PagerPageHolder(
         if (page.fullPage) return imageStream
         if (ImageUtil.isAnimatedAndSupported(imageStream)) {
             page.fullPage = true
-            skipExtra = true
+            splitDoublePages()
             return imageStream
         } else if (ImageUtil.isAnimatedAndSupported(imageStream2)) {
             page.isolatedPage = true
             extraPage?.fullPage = true
-            skipExtra = true
+            splitDoublePages()
             return imageStream
         }
         val imageBytes = imageStream.readBytes()
@@ -436,7 +436,7 @@ class PagerPageHolder(
             imageStream2.close()
             imageStream.close()
             page.fullPage = true
-            skipExtra = true
+            splitDoublePages()
             logcat(LogPriority.ERROR, e) { "Cannot combine pages" }
             return imageBytes.inputStream()
         }
@@ -448,7 +448,7 @@ class PagerPageHolder(
             imageStream2.close()
             imageStream.close()
             page.fullPage = true
-            skipExtra = true
+            splitDoublePages()
             return imageBytes.inputStream()
         }
 
@@ -459,8 +459,8 @@ class PagerPageHolder(
             imageStream2.close()
             imageStream.close()
             extraPage?.fullPage = true
-            skipExtra = true
             page.isolatedPage = true
+            splitDoublePages()
             logcat(LogPriority.ERROR, e) { "Cannot combine pages" }
             return imageBytes.inputStream()
         }
@@ -473,7 +473,7 @@ class PagerPageHolder(
             imageStream.close()
             extraPage?.fullPage = true
             page.isolatedPage = true
-            skipExtra = true
+            splitDoublePages()
             return imageBytes.inputStream()
         }
         val isLTR = (viewer !is R2LPagerViewer).xor(viewer.config.invertDoublePages)
@@ -487,6 +487,16 @@ class PagerPageHolder(
                 } else {
                     progressBar.setProgress(it)
                 }
+            }
+        }
+    }
+
+    private fun splitDoublePages() {
+        scope?.launchUI {
+            delay(100)
+            viewer.splitDoublePages(page)
+            if (extraPage?.fullPage == true || page.fullPage) {
+                extraPage = null
             }
         }
     }
