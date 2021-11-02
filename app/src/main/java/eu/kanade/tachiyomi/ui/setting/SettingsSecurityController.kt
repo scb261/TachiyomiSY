@@ -18,6 +18,7 @@ import eu.kanade.tachiyomi.util.preference.defaultValue
 import eu.kanade.tachiyomi.util.preference.intListPreference
 import eu.kanade.tachiyomi.util.preference.onClick
 import eu.kanade.tachiyomi.util.preference.preference
+//import eu.kanade.tachiyomi.util.preference.requireAuthentication
 import eu.kanade.tachiyomi.util.preference.summaryRes
 import eu.kanade.tachiyomi.util.preference.switchPreference
 import eu.kanade.tachiyomi.util.preference.titleRes
@@ -40,6 +41,7 @@ class SettingsSecurityController : SettingsController() {
                 titleRes = R.string.lock_with_biometrics
                 defaultValue = false
             }
+
             intListPreference {
                 key = Keys.lockAppAfter
                 titleRes = R.string.lock_when_idle
@@ -66,6 +68,7 @@ class SettingsSecurityController : SettingsController() {
             summaryRes = R.string.secure_screen_summary
             defaultValue = false
         }
+
         switchPreference {
             key = Keys.hideNotificationContent
             titleRes = R.string.hide_notification_content
