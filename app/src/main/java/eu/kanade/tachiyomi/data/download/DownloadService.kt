@@ -4,11 +4,9 @@ import android.app.Notification
 import android.app.Service
 import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkInfo.State.CONNECTED
-import android.net.NetworkInfo.State.DISCONNECTED
 import android.os.IBinder
 import android.os.PowerManager
+//import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.jakewharton.rxrelay.BehaviorRelay
 import eu.kanade.tachiyomi.R
@@ -17,7 +15,8 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.util.lang.plusAssign
 import eu.kanade.tachiyomi.util.lang.withUIContext
 import eu.kanade.tachiyomi.util.system.acquireWakeLock
-import eu.kanade.tachiyomi.util.system.connectivityManager
+//import eu.kanade.tachiyomi.util.system.isConnectedToWifi
+//import eu.kanade.tachiyomi.util.system.isOnline
 import eu.kanade.tachiyomi.util.system.isServiceRunning
 import eu.kanade.tachiyomi.util.system.notification
 import eu.kanade.tachiyomi.util.system.toast
@@ -28,11 +27,18 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import ru.beryukhov.reactivenetwork.Connectivity
 import ru.beryukhov.reactivenetwork.ReactiveNetwork
 import rx.subscriptions.CompositeSubscription
 import timber.log.Timber
 import uy.kohesive.injekt.injectLazy
+
+// XZM -->
+import android.net.ConnectivityManager
+import android.net.NetworkInfo.State.CONNECTED
+import android.net.NetworkInfo.State.DISCONNECTED
+import eu.kanade.tachiyomi.util.system.connectivityManager
+import ru.beryukhov.reactivenetwork.Connectivity
+// XZM <--
 
 /**
  * This service is used to manage the downloader. The system can decide to stop the service, in

@@ -8,11 +8,14 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewPropertyAnimator
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.withSave
 import androidx.core.view.isVisible
 import eu.kanade.tachiyomi.ui.reader.viewer.ViewerNavigation
 import kotlin.math.abs
+
+// XZM -->
+import androidx.core.content.ContextCompat
+// XZM <--
 
 class ReaderNavigationOverlayView(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
 

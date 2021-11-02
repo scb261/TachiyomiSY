@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.ui.category.biometric.TimeRange
-import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
+//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
 import eu.kanade.tachiyomi.util.view.setSecureScreen
 import exh.util.hours
 import exh.util.minutes
@@ -15,6 +15,10 @@ import kotlinx.coroutines.flow.onEach
 import uy.kohesive.injekt.injectLazy
 import java.util.Calendar
 import java.util.Date
+
+// XZM -->
+import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
+// XZM <--
 
 class SecureActivityDelegate(private val activity: FragmentActivity) {
 

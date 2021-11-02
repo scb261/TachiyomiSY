@@ -1,7 +1,6 @@
 package eu.kanade.tachiyomi.ui.base.controller
 
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.bluelinelabs.conductor.Controller
@@ -10,6 +9,10 @@ import com.bluelinelabs.conductor.RouterTransaction
 import eu.kanade.tachiyomi.ui.base.changehandler.OneWayFadeChangeHandler
 import eu.kanade.tachiyomi.ui.main.MainActivity
 import eu.kanade.tachiyomi.util.system.openInBrowser
+
+// XZM -->
+import android.os.Build
+// XZM <--
 
 fun Router.popControllerWithTag(tag: String): Boolean {
     val controller = getControllerWithTag(tag)

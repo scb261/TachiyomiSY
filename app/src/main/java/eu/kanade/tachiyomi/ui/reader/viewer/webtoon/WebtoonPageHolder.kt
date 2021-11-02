@@ -1,29 +1,23 @@
 package eu.kanade.tachiyomi.ui.reader.viewer.webtoon
 
-import android.annotation.SuppressLint
 import android.content.res.Resources
-import android.graphics.drawable.Animatable
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
-import coil.clear
-import coil.imageLoader
-import coil.request.CachePolicy
-import coil.request.ImageRequest
-import com.davemorrissey.labs.subscaleview.ImageSource
+//import androidx.core.view.updateLayoutParams
+//import androidx.core.view.updateMargins
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
-import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
+//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
+//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.system.ImageUtil
 import eu.kanade.tachiyomi.util.system.dpToPx
@@ -34,6 +28,19 @@ import rx.schedulers.Schedulers
 import java.io.InputStream
 import java.nio.ByteBuffer
 import java.util.concurrent.TimeUnit
+
+// XZM -->
+import android.annotation.SuppressLint
+import android.graphics.drawable.Animatable
+import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
+import coil.clear
+import coil.imageLoader
+import coil.request.CachePolicy
+import coil.request.ImageRequest
+import com.davemorrissey.labs.subscaleview.ImageSource
+import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
+// XZM <--
 
 /**
  * Holder of the webtoon reader for a single page of a chapter.

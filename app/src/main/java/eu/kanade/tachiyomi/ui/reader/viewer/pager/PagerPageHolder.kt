@@ -1,34 +1,22 @@
 package eu.kanade.tachiyomi.ui.reader.viewer.pager
 
 import android.annotation.SuppressLint
-import android.app.ActionBar
+//import android.content.Context
 import android.graphics.BitmapFactory
-import android.graphics.PointF
-import android.graphics.drawable.Animatable
-import android.view.GestureDetector
 import android.view.Gravity
-import android.view.MotionEvent
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.core.view.setMargins
-import coil.imageLoader
-import coil.request.CachePolicy
-import coil.request.ImageRequest
-import com.davemorrissey.labs.subscaleview.ImageSource
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.github.chrisbanes.photoview.PhotoView
+//import androidx.core.view.updateLayoutParams
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.InsertPage
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
-import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
-import eu.kanade.tachiyomi.ui.reader.viewer.pager.PagerConfig.ZoomType
+//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
+//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.lang.launchUI
 import eu.kanade.tachiyomi.util.system.ImageUtil
@@ -44,9 +32,28 @@ import rx.schedulers.Schedulers
 import timber.log.Timber
 import java.io.ByteArrayInputStream
 import java.io.InputStream
-import java.nio.ByteBuffer
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
+
+// XZM -->
+import android.app.ActionBar
+import android.graphics.PointF
+import android.graphics.drawable.Animatable
+import android.view.GestureDetector
+import android.view.MotionEvent
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.widget.FrameLayout
+import android.widget.ImageView
+import coil.imageLoader
+import coil.request.CachePolicy
+import coil.request.ImageRequest
+import com.davemorrissey.labs.subscaleview.ImageSource
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+import com.github.chrisbanes.photoview.PhotoView
+import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
+import eu.kanade.tachiyomi.ui.reader.viewer.pager.PagerConfig.ZoomType
+import java.nio.ByteBuffer
+// XZM <--
 
 /**
  * View of the ViewPager that contains a page of a chapter.

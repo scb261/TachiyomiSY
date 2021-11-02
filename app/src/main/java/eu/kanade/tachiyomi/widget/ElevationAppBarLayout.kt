@@ -56,8 +56,7 @@ class ElevationAppBarLayout @JvmOverloads constructor(
     override fun getBehavior(): CoordinatorLayout.Behavior<AppBarLayout> = HideToolbarOnScrollBehavior()
 
     /**
-     * Disabled. Lift
-     * on scroll is handled manually with [TachiyomiCoordinatorLayout]
+     * Disabled. Lift on scroll is handled manually with [TachiyomiCoordinatorLayout]
      */
     override fun isLiftOnScroll(): Boolean = false
 

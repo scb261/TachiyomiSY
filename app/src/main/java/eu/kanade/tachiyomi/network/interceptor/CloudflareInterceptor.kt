@@ -2,7 +2,6 @@ package eu.kanade.tachiyomi.network.interceptor
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.Toast
@@ -25,6 +24,10 @@ import uy.kohesive.injekt.injectLazy
 import java.io.IOException
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+
+// XZM -->
+import android.os.Build
+// XZM <--
 
 class CloudflareInterceptor(private val context: Context) : Interceptor {
 

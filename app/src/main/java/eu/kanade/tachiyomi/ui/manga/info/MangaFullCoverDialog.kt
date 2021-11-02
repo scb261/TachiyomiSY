@@ -1,7 +1,6 @@
 package eu.kanade.tachiyomi.ui.manga.info
 
 import android.app.Dialog
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.TypedValue
@@ -12,7 +11,6 @@ import androidx.core.view.WindowCompat
 import coil.imageLoader
 import coil.request.Disposable
 import coil.request.ImageRequest
-import com.davemorrissey.labs.subscaleview.ImageSource
 import dev.chrisbanes.insetter.applyInsetter
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
@@ -20,10 +18,16 @@ import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.databinding.MangaFullCoverDialogBinding
 import eu.kanade.tachiyomi.ui.base.controller.DialogController
 import eu.kanade.tachiyomi.ui.manga.MangaController
+//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
 import eu.kanade.tachiyomi.util.view.setNavigationBarTransparentCompat
 import eu.kanade.tachiyomi.widget.TachiyomiFullscreenDialog
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
+
+// XZM -->
+import android.graphics.drawable.BitmapDrawable
+import com.davemorrissey.labs.subscaleview.ImageSource
+// XZM <--
 
 class MangaFullCoverDialog : DialogController {
 

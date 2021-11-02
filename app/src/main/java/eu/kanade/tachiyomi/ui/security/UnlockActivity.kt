@@ -2,12 +2,17 @@ package eu.kanade.tachiyomi.ui.security
 
 import android.os.Bundle
 import androidx.biometric.BiometricPrompt
+//import androidx.fragment.app.FragmentActivity
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.base.activity.BaseThemedActivity
 import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
+//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
 import timber.log.Timber
 import java.util.Date
+
+// XZM -->
 import java.util.concurrent.Executors
+// XZM <--
 
 /**
  * Blank activity with a BiometricPrompt.

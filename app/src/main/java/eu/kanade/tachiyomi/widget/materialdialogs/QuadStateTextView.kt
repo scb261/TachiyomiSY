@@ -1,13 +1,17 @@
 package eu.kanade.tachiyomi.widget.materialdialogs
 
 import android.content.Context
-import android.graphics.PorterDuff
+//import android.content.res.ColorStateList
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.util.system.getThemeColor
+
+// XZM -->
+import android.graphics.PorterDuff
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+// XZM <--
 
 class QuadStateTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     AppCompatTextView(context, attrs) {
