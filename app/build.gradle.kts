@@ -242,10 +242,10 @@ dependencies {
     // Licenses
     implementation("com.mikepenz:aboutlibraries-core:${BuildPluginsVersion.ABOUTLIB_PLUGIN}")
 
-    // Shizuku
+    /* Shizuku only supports Android 6.0+
     val shizukuVersion = "12.0.0"
     implementation("dev.rikka.shizuku:api:$shizukuVersion")
-    implementation("dev.rikka.shizuku:provider:$shizukuVersion")
+    implementation("dev.rikka.shizuku:provider:$shizukuVersion") */
 
     // Tests
     testImplementation("junit:junit:4.13.2")

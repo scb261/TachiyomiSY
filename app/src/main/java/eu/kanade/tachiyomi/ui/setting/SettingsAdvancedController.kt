@@ -52,7 +52,6 @@ import eu.kanade.tachiyomi.util.preference.titleRes
 import eu.kanade.tachiyomi.util.storage.DiskUtil
 import eu.kanade.tachiyomi.util.system.MiuiUtil
 import eu.kanade.tachiyomi.util.system.dpToPx
-import eu.kanade.tachiyomi.util.system.isPackageInstalled
 import eu.kanade.tachiyomi.util.system.isTablet
 import eu.kanade.tachiyomi.util.system.powerManager
 import eu.kanade.tachiyomi.util.system.toast
@@ -216,7 +215,7 @@ class SettingsAdvancedController : SettingsController() {
                 entriesRes = arrayOf(
                     R.string.ext_installer_legacy,
                     R.string.ext_installer_packageinstaller,
-                    R.string.ext_installer_shizuku
+                    // R.string.ext_installer_shizuku
                 )
                 entryValues = PreferenceValues.ExtensionInstaller.values().map { it.name }.toTypedArray()
                 defaultValue = if (MiuiUtil.isMiui()) {
@@ -225,7 +224,7 @@ class SettingsAdvancedController : SettingsController() {
                     PreferenceValues.ExtensionInstaller.PACKAGEINSTALLER
                 }.name
 
-                onChange {
+                /* onChange {
                     if (it == PreferenceValues.ExtensionInstaller.SHIZUKU.name &&
                         !context.isPackageInstalled("moe.shizuku.privileged.api")
                     ) {
@@ -241,7 +240,7 @@ class SettingsAdvancedController : SettingsController() {
                     } else {
                         true
                     }
-                }
+                } */
             }
         }
 

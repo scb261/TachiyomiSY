@@ -10,7 +10,6 @@ import eu.kanade.tachiyomi.data.notification.Notifications
 import eu.kanade.tachiyomi.data.preference.PreferenceValues
 import eu.kanade.tachiyomi.extension.installer.Installer
 import eu.kanade.tachiyomi.extension.installer.PackageInstallerInstaller
-import eu.kanade.tachiyomi.extension.installer.ShizukuInstaller
 import eu.kanade.tachiyomi.extension.util.ExtensionInstaller.Companion.EXTRA_DOWNLOAD_ID
 import eu.kanade.tachiyomi.util.system.notificationBuilder
 import timber.log.Timber
@@ -44,7 +43,7 @@ class ExtensionInstallService : Service() {
         if (installer == null) {
             installer = when (installerUsed) {
                 PreferenceValues.ExtensionInstaller.PACKAGEINSTALLER -> PackageInstallerInstaller(this)
-                PreferenceValues.ExtensionInstaller.SHIZUKU -> ShizukuInstaller(this)
+                // PreferenceValues.ExtensionInstaller.SHIZUKU -> ShizukuInstaller(this)
                 else -> {
                     Timber.e("Not implemented for installer $installerUsed")
                     stopSelf()

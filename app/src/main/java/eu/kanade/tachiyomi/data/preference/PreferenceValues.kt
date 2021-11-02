@@ -65,7 +65,7 @@ object PreferenceValues {
     enum class ExtensionInstaller {
         LEGACY,
         PACKAGEINSTALLER,
-        SHIZUKU
+        // SHIZUKU
     }
 
     // SY -->
