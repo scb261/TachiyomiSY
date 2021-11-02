@@ -31,6 +31,7 @@ import kotlinx.coroutines.flow.onEach
 import ru.beryukhov.reactivenetwork.Connectivity
 import ru.beryukhov.reactivenetwork.ReactiveNetwork
 import rx.subscriptions.CompositeSubscription
+import timber.log.Timber
 import uy.kohesive.injekt.injectLazy
 
 /**
@@ -142,8 +143,9 @@ class DownloadService : Service() {
                     onNetworkStateChanged(state)
                 }
             }
-            .catch {
+            .catch { error ->
                 withUIContext {
+                    Timber.e(error)
                     toast(R.string.download_queue_error)
                     stopSelf()
                 }
