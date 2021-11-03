@@ -10,14 +10,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.isVisible
-//import androidx.core.view.updateLayoutParams
-//import androidx.core.view.updateMargins
+// import androidx.core.view.updateLayoutParams
+// import androidx.core.view.updateMargins
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
-//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
-//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
+// import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
+// import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.system.ImageUtil
 import eu.kanade.tachiyomi.util.system.dpToPx

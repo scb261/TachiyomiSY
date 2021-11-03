@@ -1,15 +1,15 @@
 package eu.kanade.tachiyomi.util.system
 
 import android.content.Context
-//import androidx.annotation.CallSuper
+// import androidx.annotation.CallSuper
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators
-//import androidx.biometric.BiometricPrompt
-//import androidx.biometric.BiometricPrompt.AuthenticationError
-//import androidx.biometric.auth.AuthPromptCallback
-//import androidx.biometric.auth.startClass2BiometricOrCredentialAuthentication
-//import androidx.core.content.ContextCompat
-//import androidx.fragment.app.FragmentActivity
+// import androidx.biometric.BiometricPrompt
+// import androidx.biometric.BiometricPrompt.AuthenticationError
+// import androidx.biometric.auth.AuthPromptCallback
+// import androidx.biometric.auth.startClass2BiometricOrCredentialAuthentication
+// import androidx.core.content.ContextCompat
+// import androidx.fragment.app.FragmentActivity
 
 // XZM -->
 import android.os.Build

@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isNotEmpty
 import androidx.core.view.isVisible
-//import com.google.android.material.progressindicator.CircularProgressIndicator
+// import com.google.android.material.progressindicator.CircularProgressIndicator
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.reader.model.ChapterTransition
 import eu.kanade.tachiyomi.ui.reader.model.ReaderChapter

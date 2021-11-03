@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.os.PowerManager
-//import androidx.annotation.StringRes
+// import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.jakewharton.rxrelay.BehaviorRelay
 import eu.kanade.tachiyomi.R
@@ -15,8 +15,8 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.util.lang.plusAssign
 import eu.kanade.tachiyomi.util.lang.withUIContext
 import eu.kanade.tachiyomi.util.system.acquireWakeLock
-//import eu.kanade.tachiyomi.util.system.isConnectedToWifi
-//import eu.kanade.tachiyomi.util.system.isOnline
+// import eu.kanade.tachiyomi.util.system.isConnectedToWifi
+// import eu.kanade.tachiyomi.util.system.isOnline
 import eu.kanade.tachiyomi.util.system.isServiceRunning
 import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.util.system.notification

@@ -1,7 +1,7 @@
 package eu.kanade.tachiyomi.ui.reader.viewer.pager
 
 import android.annotation.SuppressLint
-//import android.content.Context
+// import android.content.Context
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatTextView
-//import com.google.android.material.progressindicator.CircularProgressIndicator
+// import com.google.android.material.progressindicator.CircularProgressIndicator
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.reader.model.ChapterTransition
 import eu.kanade.tachiyomi.ui.reader.model.ReaderChapter

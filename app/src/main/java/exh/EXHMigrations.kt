@@ -1,44 +1,44 @@
 package exh
 
 import android.content.Context
-//import androidx.core.content.edit
-//import androidx.preference.PreferenceManager
-//import com.pushtorefresh.storio.sqlite.queries.DeleteQuery
-//import com.pushtorefresh.storio.sqlite.queries.Query
+// import androidx.core.content.edit
+// import androidx.preference.PreferenceManager
+// import com.pushtorefresh.storio.sqlite.queries.DeleteQuery
+// import com.pushtorefresh.storio.sqlite.queries.Query
 import com.pushtorefresh.storio.sqlite.queries.RawQuery
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.data.backup.BackupCreatorJob
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
-//import eu.kanade.tachiyomi.data.database.models.Chapter
+// import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.Manga
-//import eu.kanade.tachiyomi.data.database.resolvers.MangaUrlPutResolver
-//import eu.kanade.tachiyomi.data.database.tables.ChapterTable
+// import eu.kanade.tachiyomi.data.database.resolvers.MangaUrlPutResolver
+// import eu.kanade.tachiyomi.data.database.tables.ChapterTable
 import eu.kanade.tachiyomi.data.database.tables.MangaTable
-//import eu.kanade.tachiyomi.data.database.tables.TrackTable
+// import eu.kanade.tachiyomi.data.database.tables.TrackTable
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
-//import eu.kanade.tachiyomi.data.preference.PreferenceKeys
+// import eu.kanade.tachiyomi.data.preference.PreferenceKeys
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-//import eu.kanade.tachiyomi.data.track.TrackManager
+// import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.updater.AppUpdateJob
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
-//import eu.kanade.tachiyomi.network.PREF_DOH_CLOUDFLARE
+// import eu.kanade.tachiyomi.network.PREF_DOH_CLOUDFLARE
 import eu.kanade.tachiyomi.source.Source
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.online.all.Hitomi
 import eu.kanade.tachiyomi.source.online.all.NHentai
-//import eu.kanade.tachiyomi.ui.library.LibrarySort
-//import eu.kanade.tachiyomi.ui.library.setting.SortDirectionSetting
-//import eu.kanade.tachiyomi.ui.library.setting.SortModeSetting
-//import eu.kanade.tachiyomi.ui.reader.setting.OrientationType
+// import eu.kanade.tachiyomi.ui.library.LibrarySort
+// import eu.kanade.tachiyomi.ui.library.setting.SortDirectionSetting
+// import eu.kanade.tachiyomi.ui.library.setting.SortModeSetting
+// import eu.kanade.tachiyomi.ui.reader.setting.OrientationType
 import exh.eh.EHentaiUpdateWorker
 import exh.log.xLogE
 import exh.log.xLogW
-//import exh.merged.sql.models.MergedMangaReference
+// import exh.merged.sql.models.MergedMangaReference
 import exh.source.BlacklistedSources
 import exh.source.EH_SOURCE_ID
 import exh.source.HBROWSE_SOURCE_ID
-//import exh.source.MERGED_SOURCE_ID
+// import exh.source.MERGED_SOURCE_ID
 import exh.source.PERV_EDEN_EN_SOURCE_ID
 import exh.source.PERV_EDEN_IT_SOURCE_ID
 import exh.source.TSUMINO_SOURCE_ID
@@ -47,8 +47,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-//import uy.kohesive.injekt.Injekt
-//import uy.kohesive.injekt.api.get
+// import uy.kohesive.injekt.Injekt
+// import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import java.io.File
 import java.net.URI

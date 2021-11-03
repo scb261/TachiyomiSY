@@ -1,7 +1,7 @@
 package eu.kanade.tachiyomi.widget.materialdialogs
 
 import android.content.Context
-//import android.content.res.ColorStateList
+// import android.content.res.ColorStateList
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import eu.kanade.tachiyomi.R

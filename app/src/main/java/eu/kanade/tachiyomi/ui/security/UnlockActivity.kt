@@ -2,11 +2,11 @@ package eu.kanade.tachiyomi.ui.security
 
 import android.os.Bundle
 import androidx.biometric.BiometricPrompt
-//import androidx.fragment.app.FragmentActivity
+// import androidx.fragment.app.FragmentActivity
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.base.activity.BaseThemedActivity
 import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
 import eu.kanade.tachiyomi.util.system.logcat
 import logcat.LogPriority
 import java.util.Date

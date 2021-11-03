@@ -15,9 +15,9 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
 import android.net.ConnectivityManager
-//import android.net.NetworkCapabilities
+// import android.net.NetworkCapabilities
 import android.net.Uri
-//import android.net.wifi.WifiManager
+// import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
@@ -29,7 +29,7 @@ import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
-//import androidx.appcompat.view.ContextThemeWrapper
+// import androidx.appcompat.view.ContextThemeWrapper
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.NotificationCompat
@@ -45,7 +45,7 @@ import com.hippo.unifile.UniFile
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferenceValues
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-//import eu.kanade.tachiyomi.ui.base.activity.BaseThemedActivity
+// import eu.kanade.tachiyomi.ui.base.activity.BaseThemedActivity
 import eu.kanade.tachiyomi.util.lang.truncateCenter
 import logcat.LogPriority
 import uy.kohesive.injekt.Injekt

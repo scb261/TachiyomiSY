@@ -1,6 +1,6 @@
 package eu.kanade.tachiyomi.ui.setting
 
-//import androidx.fragment.app.FragmentActivity
+// import androidx.fragment.app.FragmentActivity
 import androidx.preference.PreferenceScreen
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
@@ -13,7 +13,7 @@ import eu.kanade.tachiyomi.util.preference.onChange
 import eu.kanade.tachiyomi.util.preference.onClick
 import eu.kanade.tachiyomi.util.preference.preference
 import eu.kanade.tachiyomi.util.preference.preferenceCategory
-//import eu.kanade.tachiyomi.util.preference.requireAuthentication
+// import eu.kanade.tachiyomi.util.preference.requireAuthentication
 import eu.kanade.tachiyomi.util.preference.summaryRes
 import eu.kanade.tachiyomi.util.preference.switchPreference
 import eu.kanade.tachiyomi.util.preference.titleRes

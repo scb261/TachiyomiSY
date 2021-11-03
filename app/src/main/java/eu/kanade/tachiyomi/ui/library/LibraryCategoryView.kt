@@ -20,11 +20,11 @@ import eu.kanade.tachiyomi.databinding.LibraryCategoryBinding
 import eu.kanade.tachiyomi.ui.category.CategoryAdapter
 import eu.kanade.tachiyomi.ui.library.setting.SortDirectionSetting
 import eu.kanade.tachiyomi.ui.library.setting.SortModeSetting
-//import eu.kanade.tachiyomi.ui.main.MainActivity
+// import eu.kanade.tachiyomi.ui.main.MainActivity
 import eu.kanade.tachiyomi.util.lang.plusAssign
 import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.util.view.inflate
-//import eu.kanade.tachiyomi.util.view.onAnimationsFinished
+// import eu.kanade.tachiyomi.util.view.onAnimationsFinished
 import eu.kanade.tachiyomi.widget.AutofitRecyclerView
 import exh.ui.LoadingHandle
 import kotlinx.coroutines.CoroutineScope

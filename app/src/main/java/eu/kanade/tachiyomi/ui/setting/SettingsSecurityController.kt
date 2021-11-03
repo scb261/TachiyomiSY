@@ -2,9 +2,9 @@ package eu.kanade.tachiyomi.ui.setting
 
 import android.app.Dialog
 import android.os.Bundle
-//import androidx.biometric.BiometricPrompt
-//import androidx.fragment.app.FragmentActivity
-//import androidx.preference.Preference
+// import androidx.biometric.BiometricPrompt
+// import androidx.fragment.app.FragmentActivity
+// import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import eu.kanade.tachiyomi.R
@@ -18,14 +18,14 @@ import eu.kanade.tachiyomi.util.preference.defaultValue
 import eu.kanade.tachiyomi.util.preference.intListPreference
 import eu.kanade.tachiyomi.util.preference.onClick
 import eu.kanade.tachiyomi.util.preference.preference
-//import eu.kanade.tachiyomi.util.preference.requireAuthentication
+// import eu.kanade.tachiyomi.util.preference.requireAuthentication
 import eu.kanade.tachiyomi.util.preference.summaryRes
 import eu.kanade.tachiyomi.util.preference.switchPreference
 import eu.kanade.tachiyomi.util.preference.titleRes
 import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
-//import eu.kanade.tachiyomi.util.system.toast
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
+// import eu.kanade.tachiyomi.util.system.toast
 import kotlinx.coroutines.flow.launchIn
 import uy.kohesive.injekt.injectLazy
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys as Keys

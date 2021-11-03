@@ -1,7 +1,7 @@
 package eu.kanade.tachiyomi.ui.reader.viewer.pager
 
 import android.annotation.SuppressLint
-//import android.content.Context
+// import android.content.Context
 import android.graphics.BitmapFactory
 import android.view.Gravity
 import android.view.ViewGroup
@@ -10,13 +10,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.core.view.setMargins
-//import androidx.core.view.updateLayoutParams
+// import androidx.core.view.updateLayoutParams
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.InsertPage
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
-//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
-//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
+// import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
+// import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
 import eu.kanade.tachiyomi.ui.webview.WebViewActivity
 import eu.kanade.tachiyomi.util.lang.launchUI
 import eu.kanade.tachiyomi.util.system.ImageUtil

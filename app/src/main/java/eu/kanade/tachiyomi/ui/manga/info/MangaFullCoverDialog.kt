@@ -18,7 +18,7 @@ import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.databinding.MangaFullCoverDialogBinding
 import eu.kanade.tachiyomi.ui.base.controller.DialogController
 import eu.kanade.tachiyomi.ui.manga.MangaController
-//import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
+// import eu.kanade.tachiyomi.ui.reader.viewer.ReaderPageImageView
 import eu.kanade.tachiyomi.util.view.setNavigationBarTransparentCompat
 import eu.kanade.tachiyomi.widget.TachiyomiFullscreenDialog
 import uy.kohesive.injekt.Injekt

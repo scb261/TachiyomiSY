@@ -1,10 +1,10 @@
 package eu.kanade.tachiyomi.ui.main
 
-//import android.animation.ValueAnimator
+// import android.animation.ValueAnimator
 import android.app.SearchManager
 import android.content.Intent
-//import android.graphics.Color
-//import android.os.Build
+// import android.graphics.Color
+// import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.view.Gravity
@@ -12,16 +12,16 @@ import android.view.Menu
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.view.ActionMode
-//import androidx.core.animation.doOnEnd
-//import androidx.core.splashscreen.SplashScreen
-//import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+// import androidx.core.animation.doOnEnd
+// import androidx.core.splashscreen.SplashScreen
+// import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
-//import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-//import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
+// import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+// import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceDialogController
 import com.bluelinelabs.conductor.Conductor
@@ -60,7 +60,7 @@ import eu.kanade.tachiyomi.ui.recent.updates.UpdatesController
 import eu.kanade.tachiyomi.ui.setting.SettingsMainController
 import eu.kanade.tachiyomi.util.lang.launchIO
 import eu.kanade.tachiyomi.util.lang.launchUI
-//import eu.kanade.tachiyomi.util.system.dpToPx
+// import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.isTablet
 import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.util.system.toast

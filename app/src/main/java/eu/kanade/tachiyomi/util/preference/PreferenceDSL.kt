@@ -2,8 +2,8 @@ package eu.kanade.tachiyomi.util.preference
 
 import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
-//import androidx.biometric.BiometricPrompt
-//import androidx.fragment.app.FragmentActivity
+// import androidx.biometric.BiometricPrompt
+// import androidx.fragment.app.FragmentActivity
 import androidx.preference.CheckBoxPreference
 import androidx.preference.DialogPreference
 import androidx.preference.EditTextPreference
@@ -16,11 +16,11 @@ import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import eu.kanade.tachiyomi.R
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.startAuthentication
 import eu.kanade.tachiyomi.util.system.getResourceColor
-//import eu.kanade.tachiyomi.util.system.toast
+// import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.widget.preference.AdaptiveTitlePreferenceCategory
 import eu.kanade.tachiyomi.widget.preference.IntListPreference
 import eu.kanade.tachiyomi.widget.preference.SwitchPreferenceCategory

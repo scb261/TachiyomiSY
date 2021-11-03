@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.ui.category.biometric.TimeRange
-//import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
+// import eu.kanade.tachiyomi.util.system.AuthenticatorUtil.isAuthenticationSupported
 import eu.kanade.tachiyomi.util.view.setSecureScreen
 import exh.util.hours
 import exh.util.minutes

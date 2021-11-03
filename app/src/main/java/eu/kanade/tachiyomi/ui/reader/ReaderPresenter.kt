@@ -15,8 +15,8 @@ import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.download.DownloadManager
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.track.TrackManager
-//import eu.kanade.tachiyomi.data.track.job.DelayedTrackingStore
-//import eu.kanade.tachiyomi.data.track.job.DelayedTrackingUpdateJob
+// import eu.kanade.tachiyomi.data.track.job.DelayedTrackingStore
+// import eu.kanade.tachiyomi.data.track.job.DelayedTrackingUpdateJob
 import eu.kanade.tachiyomi.source.LocalSource
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.Page
@@ -40,7 +40,7 @@ import eu.kanade.tachiyomi.util.storage.DiskUtil
 import eu.kanade.tachiyomi.util.storage.getPicturesDir
 import eu.kanade.tachiyomi.util.storage.getTempShareDir
 import eu.kanade.tachiyomi.util.system.ImageUtil
-//import eu.kanade.tachiyomi.util.system.isOnline
+// import eu.kanade.tachiyomi.util.system.isOnline
 import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.util.updateCoverLastModified
 import exh.md.utils.FollowStatus
