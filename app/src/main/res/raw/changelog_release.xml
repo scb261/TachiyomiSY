@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog bulletedList="true">
+    <changelogversion versionName="1.1.3" changeDate="November 3,2021">
+        <changelogtext>[b]Based on TachiyomiSY r412(from r407)[/b]</changelogtext>
+    </changelogversion>
     <changelogversion versionName="1.1.2" changeDate="September 15,2021">
         <changelogtext>Fix crash when changing categories on Android 5.x</changelogtext>
     </changelogversion>

@@ -28,7 +28,7 @@ android {
         targetSdk = AndroidConfig.targetSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         versionCode = 6
-        versionName = "xzm-1.1.2"
+        versionName = "xzm-1.1.3"
 
         buildConfigField("String", "COMMIT_COUNT", "\"${getCommitCount()}\"")
         buildConfigField("String", "COMMIT_SHA", "\"${getGitSha()}\"")
