@@ -12,9 +12,9 @@ import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.database.models.Category
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
 import eu.kanade.tachiyomi.data.preference.CHARGING
+// import eu.kanade.tachiyomi.data.preference.ONLY_ON_WIFI
 import eu.kanade.tachiyomi.data.preference.PreferenceValues
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
 import eu.kanade.tachiyomi.data.preference.asImmediateFlow
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.databinding.PrefLibraryColumnsBinding
@@ -45,6 +45,10 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys as Keys
+
+// XZM -->
+import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+// XZM <--
 
 class SettingsLibraryController : SettingsController() {
 

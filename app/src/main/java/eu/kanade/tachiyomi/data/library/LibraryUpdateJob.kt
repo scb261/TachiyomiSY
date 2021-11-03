@@ -9,11 +9,16 @@ import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import eu.kanade.tachiyomi.data.preference.CHARGING
+// import eu.kanade.tachiyomi.data.preference.ONLY_ON_WIFI
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
-import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+// import eu.kanade.tachiyomi.util.system.isConnectedToWifi
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import java.util.concurrent.TimeUnit
+
+// XZM -->
+import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+// XZM <--
 
 class LibraryUpdateJob(private val context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {

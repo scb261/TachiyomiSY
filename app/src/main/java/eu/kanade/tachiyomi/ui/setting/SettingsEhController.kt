@@ -18,8 +18,8 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.preference.CHARGING
+// import eu.kanade.tachiyomi.data.preference.ONLY_ON_WIFI
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys
-import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
 import eu.kanade.tachiyomi.data.preference.asImmediateFlow
 import eu.kanade.tachiyomi.databinding.DialogStubTextinputBinding
 import eu.kanade.tachiyomi.ui.setting.eh.FrontPageCategoriesDialog
@@ -67,6 +67,10 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import uy.kohesive.injekt.injectLazy
 import kotlin.time.Duration
+
+// XZM -->
+import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+// XZM <--
 
 /**
  * EH Settings fragment

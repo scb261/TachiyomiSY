@@ -26,7 +26,6 @@ import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import java.io.InputStream
-import java.nio.ByteBuffer
 import java.util.concurrent.TimeUnit
 
 // XZM -->
@@ -40,6 +39,7 @@ import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.davemorrissey.labs.subscaleview.ImageSource
 import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressBar
+import java.nio.ByteBuffer
 // XZM <--
 
 /**
