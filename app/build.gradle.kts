@@ -26,7 +26,6 @@ android {
         applicationId = "eu.kanade.tachiyomi.xzm"
         minSdk = AndroidConfig.minSdk
         targetSdk = AndroidConfig.targetSdk
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         versionCode = 8
         versionName = "xzm-1.1.5"
 
@@ -38,6 +37,7 @@ android {
         ndk {
             abiFilters += setOf("armeabi-v7a", "arm64-v8a", "x86")
         }
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -93,6 +93,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+
+        // Disable some unused things
+        aidl = false
+        renderScript = false
+        shaders = false
     }
 
     lintOptions {
