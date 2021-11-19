@@ -65,10 +65,9 @@ import android.os.Build
 // XZM <--
 
 class SettingsAdvancedController : SettingsController() {
+
     private val network: NetworkHelper by injectLazy()
-
     private val chapterCache: ChapterCache by injectLazy()
-
     private val db: DatabaseHelper by injectLazy()
 
     @SuppressLint("BatteryLife")
