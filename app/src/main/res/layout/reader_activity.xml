@@ -111,7 +111,7 @@
 
                     <Button
                         android:id="@+id/eh_autoscroll_help"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:text="\?"
@@ -128,7 +128,7 @@
 
                     <Button
                         android:id="@+id/eh_retry_all"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -137,7 +137,7 @@
 
                     <Button
                         android:id="@+id/eh_retry_all_help"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:text="\?"
@@ -146,7 +146,7 @@
 
                     <Button
                         android:id="@+id/eh_boost_page"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -155,7 +155,7 @@
 
                     <Button
                         android:id="@+id/eh_boost_page_help"
-                        style="?android:attr/borderlessButtonStyle"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:text="\?"
@@ -167,7 +167,7 @@
 
             <ImageButton
                 android:id="@+id/expand_eh_button"
-                style="?android:attr/borderlessButtonStyle"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="0dp"
