@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="8dp"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         android:text="@string/eh_autoscroll" />
 
                     <EditText
@@ -115,7 +115,7 @@
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:text="\?"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         tools:ignore="HardcodedText" />
 
                 </LinearLayout>
@@ -132,7 +132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         android:text="@string/eh_retry_all" />
 
                     <Button
@@ -141,7 +141,7 @@
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:text="\?"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         tools:ignore="HardcodedText" />
 
                     <Button
@@ -150,7 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         android:text="@string/eh_boost_page" />
 
                     <Button
@@ -159,7 +159,7 @@
                         android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:text="\?"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
 
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:padding="0dp"
                 app:srcCompat="@drawable/ic_keyboard_arrow_down_white_32dp"
-                app:tint="?attr/colorOnToolbar" />
+                app:tint="?attr/colorOnSurface" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -217,7 +217,7 @@
                     android:padding="@dimen/screen_edge_margin"
                     android:rotation="90"
                     app:srcCompat="@drawable/ic_skip_previous_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <LinearLayout
                     android:id="@+id/reader_seekbar_vert"
@@ -235,7 +235,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:gravity="center"
-                            android:textColor="?attr/colorOnToolbar"
+                            android:textColor="?attr/colorOnSurface"
                             android:textSize="15sp"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -269,7 +269,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:gravity="center"
-                            android:textColor="?attr/colorOnToolbar"
+                            android:textColor="?attr/colorOnSurface"
                             android:textSize="15sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -290,7 +290,7 @@
                     android:padding="@dimen/screen_edge_margin"
                     android:rotation="90"
                     app:srcCompat="@drawable/ic_skip_next_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
             </LinearLayout>
 
@@ -332,7 +332,7 @@
                     android:contentDescription="@string/action_previous_chapter"
                     android:padding="@dimen/screen_edge_margin"
                     app:srcCompat="@drawable/ic_skip_previous_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <LinearLayout
                     android:id="@+id/reader_seekbar"
@@ -349,7 +349,7 @@
                         android:layout_width="32dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp"
                         tools:text="1" />
 
@@ -370,7 +370,7 @@
                         android:layout_width="32dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="?attr/colorOnToolbar"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="15sp"
                         tools:text="15" />
 
@@ -384,7 +384,7 @@
                     android:contentDescription="@string/action_next_chapter"
                     android:padding="@dimen/screen_edge_margin"
                     app:srcCompat="@drawable/ic_skip_next_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
             </LinearLayout>
 
@@ -408,7 +408,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_format_list_numbered_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/action_web_view"
@@ -422,7 +422,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_public_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/action_reading_mode"
@@ -436,7 +436,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_reader_default_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/action_crop_borders"
@@ -450,7 +450,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_crop_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/action_rotation"
@@ -464,7 +464,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_screen_rotation_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/double_page"
@@ -478,7 +478,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_book_open_variant_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/shift_page_button"
@@ -492,7 +492,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_page_next_outline_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
                 <ImageButton
                     android:id="@+id/action_settings"
@@ -506,7 +506,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:srcCompat="@drawable/ic_settings_24dp"
-                    app:tint="?attr/colorOnToolbar" />
+                    app:tint="?attr/colorOnSurface" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
