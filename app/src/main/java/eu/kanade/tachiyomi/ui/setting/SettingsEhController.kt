@@ -20,7 +20,6 @@ import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.preference.DEVICE_CHARGING
 // import eu.kanade.tachiyomi.data.preference.DEVICE_ONLY_ON_WIFI
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys
-import eu.kanade.tachiyomi.data.preference.asImmediateFlow
 import eu.kanade.tachiyomi.databinding.DialogStubTextinputBinding
 import eu.kanade.tachiyomi.ui.setting.eh.FrontPageCategoriesDialog
 import eu.kanade.tachiyomi.ui.setting.eh.LanguagesDialog
@@ -137,8 +136,7 @@ class SettingsEhController : SettingsController() {
 
                 onChange { preferences.useHentaiAtHome().reconfigure() }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             switchPreference {
@@ -150,8 +148,7 @@ class SettingsEhController : SettingsController() {
 
                 onChange { preferences.useJapaneseTitle().reconfigure() }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             switchPreference {
@@ -163,8 +160,7 @@ class SettingsEhController : SettingsController() {
 
                 onChange { preferences.exhUseOriginalImages().reconfigure() }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             preference {
@@ -180,8 +176,7 @@ class SettingsEhController : SettingsController() {
                     startActivity(intent)
                 }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             preference {
@@ -225,8 +220,7 @@ class SettingsEhController : SettingsController() {
                         .show()
                 }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             preference {
@@ -271,8 +265,7 @@ class SettingsEhController : SettingsController() {
                         .show()
                 }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             preference {
@@ -286,8 +279,7 @@ class SettingsEhController : SettingsController() {
                     dialog.showDialog(router)
                 }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             preference {
@@ -301,8 +293,7 @@ class SettingsEhController : SettingsController() {
                     dialog.showDialog(router)
                 }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             switchPreference {
@@ -311,8 +302,7 @@ class SettingsEhController : SettingsController() {
                 titleRes = R.string.watched_list_default
                 summaryRes = R.string.watched_list_state_summary
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             listPreference {
@@ -339,8 +329,7 @@ class SettingsEhController : SettingsController() {
 
                 onChange { preferences.imageQuality().reconfigure() }
 
-                preferences.enableExhentai().asImmediateFlow { isVisible = it }
-                    .launchIn(viewScope)
+                visibleIf(preferences.enableExhentai()) { it }
             }
 
             switchPreference {
@@ -469,9 +458,7 @@ class SettingsEhController : SettingsController() {
                     summary = context.getString(R.string.restrictions, restrictionsText)
                 }
 
-                preferences.exhAutoUpdateFrequency().asFlow()
-                    .onEach { isVisible = it > 0 }
-                    .launchIn(viewScope)
+                visibleIf(preferences.exhAutoUpdateFrequency()) { it > 0 }
 
                 onChange {
                     // Post to event looper to allow the preference to be updated.
