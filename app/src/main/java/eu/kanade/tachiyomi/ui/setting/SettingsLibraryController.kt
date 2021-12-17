@@ -232,8 +232,6 @@ class SettingsLibraryController : SettingsController() {
                 entryValues = arrayOf(MANGA_FULLY_READ, MANGA_ONGOING)
                 defaultValue = preferences.libraryUpdateMangaRestriction().defaultValue
 
-                visibleIfGlobalUpdateEnabled()
-
                 fun updateSummary() {
                     val restrictions = preferences.libraryUpdateMangaRestriction().get()
                         .sorted()
@@ -260,8 +258,6 @@ class SettingsLibraryController : SettingsController() {
             preference {
                 key = Keys.libraryUpdateCategories
                 titleRes = R.string.categories
-
-                visibleIfGlobalUpdateEnabled()
 
                 onClick {
                     LibraryGlobalUpdateCategoriesDialog().showDialog(router)
@@ -323,7 +319,6 @@ class SettingsLibraryController : SettingsController() {
                 titleRes = R.string.pref_library_update_refresh_metadata
                 summaryRes = R.string.pref_library_update_refresh_metadata_summary
                 defaultValue = false
-                visibleIfGlobalUpdateEnabled()
             }
             if (trackManager.hasLoggedServices()) {
                 switchPreference {
@@ -331,7 +326,6 @@ class SettingsLibraryController : SettingsController() {
                     titleRes = R.string.pref_library_update_refresh_trackers
                     summaryRes = R.string.pref_library_update_refresh_trackers_summary
                     defaultValue = false
-                    visibleIfGlobalUpdateEnabled()
                 }
             }
         }
