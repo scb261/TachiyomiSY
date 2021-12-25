@@ -116,6 +116,7 @@ import uy.kohesive.injekt.injectLazy
 import java.io.File
 import kotlin.math.abs
 import kotlin.math.max
+import kotlin.time.Duration.Companion.seconds
 
 // XZM -->
 import eu.kanade.tachiyomi.util.system.GLUtil
