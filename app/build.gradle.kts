@@ -58,7 +58,7 @@ android {
         }
     }
 
-    flavorDimensions("default")
+    flavorDimensions += "default"
 
     productFlavors {
         create("standard") {
