@@ -38,7 +38,7 @@ class MangaFullCoverDialog : DialogController {
     private var disposable: Disposable? = null
 
     private val mangaController
-        get() = targetController as MangaController
+        get() = targetController as MangaController?
 
     constructor(targetController: MangaController, manga: Manga) : super(bundleOf("mangaId" to manga.id)) {
         this.targetController = targetController
@@ -58,9 +58,9 @@ class MangaFullCoverDialog : DialogController {
             setNavigationOnClickListener { dialog?.dismiss() }
             setOnMenuItemClickListener {
                 when (it.itemId) {
-                    R.id.action_share_cover -> mangaController.shareCover()
-                    R.id.action_save_cover -> mangaController.saveCover()
-                    R.id.action_edit_cover -> mangaController.changeCover()
+                    R.id.action_share_cover -> mangaController?.shareCover()
+                    R.id.action_save_cover -> mangaController?.saveCover()
+                    R.id.action_edit_cover -> mangaController?.changeCover()
                 }
                 true
             }
