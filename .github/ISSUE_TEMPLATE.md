@@ -3,7 +3,7 @@
 I acknowledge that:
 
 - I have updated:
-  - To the latest version of the app (1.1.3)
+  - To the latest version of the app (1.1.4)
   - All extensions
 - I have tried the troubleshooting guide: https://tachiyomi.org/help/guides/troubleshooting-problems/
 - If this is an issue with an extension, that I should be opening an issue in https://github.com/tachiyomiorg/tachiyomi-extensions (note: extensions still support Android 5.x)
