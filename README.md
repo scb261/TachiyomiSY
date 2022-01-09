@@ -1,7 +1,7 @@
 # TachiyomiXZM
 Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or [a fork](https://tachiyomi.org/forks/) that is not TachiyomiXZM if you have Android 6.0 or above.
 
-For now I will cherry-pick new commits once in a while.
+~~For now I will cherry-pick new commits once in a while.~~ I don't have time for it right now, so the app is in fix-only mode for now. I don't know if and when I will update it properly.
 
 ## Features
 
