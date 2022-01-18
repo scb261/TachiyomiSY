@@ -2,7 +2,6 @@ package eu.kanade.tachiyomi.ui.reader
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
-import android.app.ActionBar
 import android.app.ProgressDialog
 import android.content.ClipData
 import android.content.Context
@@ -118,6 +117,7 @@ import kotlin.math.max
 import kotlin.time.Duration.Companion.seconds
 
 // XZM -->
+import android.app.ActionBar
 import eu.kanade.tachiyomi.util.system.GLUtil
 // XZM <--
 
@@ -278,7 +278,9 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
         readingModeToast?.cancel()
         progressDialog?.dismiss()
         progressDialog = null
+        // XZM -->
         listeners = mutableListOf()
+        // XZM <--
         // SY -->
         autoScrollJob?.cancel()
         autoScrollJob = null
@@ -937,6 +939,7 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
         )
     }
 
+    // XZM -->
     private var listeners: MutableList<ActionBar.OnMenuVisibilityListener> = mutableListOf()
 
     fun addOnMenuVisibilityListener(listener: ActionBar.OnMenuVisibilityListener) {
@@ -946,6 +949,7 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
     fun removeOnMenuVisibilityListener(listener: ActionBar.OnMenuVisibilityListener) {
         listeners.remove(listener)
     }
+    // XZM <--
 
     /**
      * Sets the visibility of the menu according to [visible] and with an optional parameter to
@@ -953,7 +957,9 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
      */
     fun setMenuVisibility(visible: Boolean, animate: Boolean = true) {
         menuVisible = visible
+        // XZM -->
         listeners.forEach { listener -> listener.onMenuVisibilityChanged(visible) }
+        // XZM <--
         if (visible) {
             windowInsetsController.show(WindowInsetsCompat.Type.systemBars())
             binding.readerMenu.isVisible = true
