@@ -11,9 +11,6 @@ plugins {
     kotlin("plugin.parcelize")
     kotlin("plugin.serialization")
     id("com.github.zellius.shortcut-helper")
-    // Realm (EH)
-    kotlin("kapt")
-    id("realm-android")
 }
 
 shortcutHelper.setFilePath("./shortcuts.xml")
@@ -26,7 +23,7 @@ android {
         applicationId = "eu.kanade.tachiyomi.xzm"
         minSdk = AndroidConfig.minSdk
         targetSdk = AndroidConfig.targetSdk
-        versionCode = 9
+        versionCode = 10
         versionName = "xzm-1.1.5"
 
         buildConfigField("String", "COMMIT_COUNT", "\"${getCommitCount()}\"")
