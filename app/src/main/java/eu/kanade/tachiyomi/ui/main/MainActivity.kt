@@ -212,17 +212,6 @@ class MainActivity : BaseViewBindingActivity<MainActivityBinding>() {
 
         val container: ViewGroup = binding.controllerContainer
         router = Conductor.attachRouter(this, container, savedInstanceState)
-        if (!router.hasRootController()) {
-            // Set start screen
-            if (!handleIntentAction(intent)) {
-                setSelectedNavItem(startScreenId)
-            }
-        }
-
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-
         router.addChangeListener(
             object : ControllerChangeHandler.ControllerChangeListener {
                 override fun onChangeStarted(
@@ -245,6 +234,17 @@ class MainActivity : BaseViewBindingActivity<MainActivityBinding>() {
                 }
             }
         )
+        if (!router.hasRootController()) {
+            // Set start screen
+            if (!handleIntentAction(intent)) {
+                setSelectedNavItem(startScreenId)
+            }
+        }
+        syncActivityViewWithController()
+
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         if (savedInstanceState == null) {
             // Reset Incognito Mode on relaunch
@@ -321,7 +321,6 @@ class MainActivity : BaseViewBindingActivity<MainActivityBinding>() {
     override fun onResume() {
         super.onResume()
         checkForUpdates()
-        syncActivityViewWithController()
     }
 
     private fun checkForUpdates() {
