@@ -9,4 +9,7 @@
 
     <!-- Default Theme -->
     <color name="divider_default">@color/md_white_1000_12</color>
+
+    <!-- XZM -->
+    <color name="select_library_item">#b2b2b2</color>
 </resources>

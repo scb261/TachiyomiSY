@@ -73,4 +73,6 @@
 
     <color name="ic_launcher_background">#232B30</color>
 
+    <!-- XZM -->
+    <color name="select_library_item">#2979FF</color>
 </resources>
