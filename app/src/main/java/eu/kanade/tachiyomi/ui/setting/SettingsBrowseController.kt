@@ -50,7 +50,7 @@ class SettingsBrowseController : SettingsController() {
                 key = Keys.useNewSourceNavigation
                 titleRes = R.string.pref_source_navigation
                 summaryRes = R.string.pref_source_navigation_summery
-                defaultValue = true
+                defaultValue = false
             }
             switchPreference {
                 key = Keys.allowLocalSourceHiddenFolders
