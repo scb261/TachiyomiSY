@@ -2,7 +2,7 @@ package exh
 
 import android.content.Context
 // import androidx.core.content.edit
-// import androidx.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 // import com.pushtorefresh.storio.sqlite.queries.DeleteQuery
 // import com.pushtorefresh.storio.sqlite.queries.Query
 import com.pushtorefresh.storio.sqlite.queries.RawQuery
@@ -16,8 +16,10 @@ import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.database.tables.MangaTable
 // import eu.kanade.tachiyomi.data.database.tables.TrackTable
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
+import eu.kanade.tachiyomi.data.preference.MANGA_ONGOING
 // import eu.kanade.tachiyomi.data.preference.PreferenceKeys
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
+import eu.kanade.tachiyomi.data.preference.minusAssign
 // import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.updater.AppUpdateJob
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
@@ -90,6 +92,7 @@ object EXHMigrations {
                     return false
                 }
 
+                val prefs = PreferenceManager.getDefaultSharedPreferences(context)
                 if (oldVersion under 2) {
                     // Setup EH updater task after migrating to WorkManager
                     EHentaiUpdateWorker.scheduleBackground(context)
@@ -108,6 +111,12 @@ object EXHMigrations {
                     if (updateInterval in listOf(3, 4, 6, 8)) {
                         preferences.libraryUpdateInterval().set(12)
                         LibraryUpdateJob.setupTask(context, 12)
+                    }
+                }
+                if (oldVersion under 9) {
+                    val oldUpdateOngoingOnly = prefs.getBoolean("pref_update_only_non_completed_key", true)
+                    if (!oldUpdateOngoingOnly) {
+                        preferences.libraryUpdateMangaRestriction() -= MANGA_ONGOING
                     }
                 }
 

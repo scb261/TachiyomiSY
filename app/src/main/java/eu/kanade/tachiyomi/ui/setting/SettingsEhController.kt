@@ -17,8 +17,8 @@ import com.tfcporciuncula.flow.Preference
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.database.models.Manga
-import eu.kanade.tachiyomi.data.preference.CHARGING
-// import eu.kanade.tachiyomi.data.preference.ONLY_ON_WIFI
+import eu.kanade.tachiyomi.data.preference.DEVICE_CHARGING
+// import eu.kanade.tachiyomi.data.preference.DEVICE_ONLY_ON_WIFI
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys
 import eu.kanade.tachiyomi.data.preference.asImmediateFlow
 import eu.kanade.tachiyomi.databinding.DialogStubTextinputBinding
@@ -69,7 +69,7 @@ import uy.kohesive.injekt.injectLazy
 import kotlin.time.Duration
 
 // XZM -->
-import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+import eu.kanade.tachiyomi.data.preference.DEVICE_UNMETERED_NETWORK
 // XZM <--
 
 /**
@@ -448,15 +448,15 @@ class SettingsEhController : SettingsController() {
                 key = PreferenceKeys.eh_autoUpdateRestrictions
                 titleRes = R.string.auto_update_restrictions
                 entriesRes = arrayOf(R.string.network_unmetered, R.string.charging)
-                entryValues = arrayOf(UNMETERED_NETWORK, CHARGING)
+                entryValues = arrayOf(DEVICE_UNMETERED_NETWORK, DEVICE_CHARGING)
 
                 fun updateSummary() {
                     val restrictions = preferences.exhAutoUpdateRequirements().get()
                         .sorted()
                         .map {
                             when (it) {
-                                UNMETERED_NETWORK -> context.getString(R.string.network_unmetered)
-                                CHARGING -> context.getString(R.string.charging)
+                                DEVICE_UNMETERED_NETWORK -> context.getString(R.string.network_unmetered)
+                                DEVICE_CHARGING -> context.getString(R.string.charging)
                                 else -> it
                             }
                         }

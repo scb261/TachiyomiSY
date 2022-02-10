@@ -2,8 +2,11 @@ package eu.kanade.tachiyomi.data.preference
 
 import eu.kanade.tachiyomi.R
 
-const val UNMETERED_NETWORK = "wifi"
-const val CHARGING = "ac"
+const val DEVICE_UNMETERED_NETWORK = "wifi"
+const val DEVICE_CHARGING = "ac"
+
+const val MANGA_ONGOING = "manga_ongoing"
+const val MANGA_FULLY_READ = "manga_fully_read"
 
 /**
  * This class stores the values for the preferences in the application.

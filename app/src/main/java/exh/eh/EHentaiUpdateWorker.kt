@@ -16,8 +16,8 @@ import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.database.models.toMangaInfo
 import eu.kanade.tachiyomi.data.library.LibraryUpdateNotifier
-import eu.kanade.tachiyomi.data.preference.CHARGING
-// import eu.kanade.tachiyomi.data.preference.ONLY_ON_WIFI
+import eu.kanade.tachiyomi.data.preference.DEVICE_CHARGING
+// import eu.kanade.tachiyomi.data.preference.DEVICE_ONLY_ON_WIFI
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.toSChapter
@@ -47,7 +47,7 @@ import uy.kohesive.injekt.injectLazy
 import java.util.concurrent.TimeUnit
 
 // XZM -->
-import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+import eu.kanade.tachiyomi.data.preference.DEVICE_UNMETERED_NETWORK
 // XZM <--
 
 class EHentaiUpdateWorker(private val context: Context, workerParams: WorkerParameters) :
@@ -244,8 +244,8 @@ class EHentaiUpdateWorker(private val context: Context, workerParams: WorkerPara
             val interval = prefInterval ?: preferences.exhAutoUpdateFrequency().get()
             if (interval > 0) {
                 val restrictions = preferences.exhAutoUpdateRequirements().get()
-                val acRestriction = CHARGING in restrictions
-                val wifiRestriction = if (UNMETERED_NETWORK in restrictions) {
+                val acRestriction = DEVICE_CHARGING in restrictions
+                val wifiRestriction = if (DEVICE_UNMETERED_NETWORK in restrictions) {
                     NetworkType.UNMETERED
                 } else {
                     NetworkType.CONNECTED

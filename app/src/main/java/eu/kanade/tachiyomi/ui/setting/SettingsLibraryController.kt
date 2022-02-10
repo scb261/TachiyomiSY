@@ -11,9 +11,11 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.database.models.Category
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
-import eu.kanade.tachiyomi.data.preference.CHARGING
-// import eu.kanade.tachiyomi.data.preference.ONLY_ON_WIFI
-import eu.kanade.tachiyomi.data.preference.PreferenceValues
+import eu.kanade.tachiyomi.data.preference.DEVICE_CHARGING
+// import eu.kanade.tachiyomi.data.preference.DEVICE_ONLY_ON_WIFI
+import eu.kanade.tachiyomi.data.preference.MANGA_FULLY_READ
+import eu.kanade.tachiyomi.data.preference.MANGA_ONGOING
+import eu.kanade.tachiyomi.data.preference.PreferenceValues.GroupLibraryMode
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.preference.asImmediateFlow
 import eu.kanade.tachiyomi.data.track.TrackManager
@@ -47,7 +49,7 @@ import uy.kohesive.injekt.injectLazy
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys as Keys
 
 // XZM -->
-import eu.kanade.tachiyomi.data.preference.UNMETERED_NETWORK
+import eu.kanade.tachiyomi.data.preference.DEVICE_UNMETERED_NETWORK
 // XZM <--
 
 class SettingsLibraryController : SettingsController() {
@@ -186,11 +188,11 @@ class SettingsLibraryController : SettingsController() {
                 }
             }
             multiSelectListPreference {
-                key = Keys.libraryUpdateRestriction
+                key = Keys.libraryUpdateDeviceRestriction
                 titleRes = R.string.pref_library_update_restriction
                 entriesRes = arrayOf(R.string.network_unmetered, R.string.charging)
-                entryValues = arrayOf(UNMETERED_NETWORK, CHARGING)
-                defaultValue = setOf(UNMETERED_NETWORK)
+                entryValues = arrayOf(DEVICE_UNMETERED_NETWORK, DEVICE_CHARGING)
+                defaultValue = preferences.libraryUpdateDeviceRestriction().defaultValue
 
                 preferences.libraryUpdateInterval().asImmediateFlow { isVisible = it > 0 }
                     .launchIn(viewScope)
@@ -202,12 +204,12 @@ class SettingsLibraryController : SettingsController() {
                 }
 
                 fun updateSummary() {
-                    val restrictions = preferences.libraryUpdateRestriction().get()
+                    val restrictions = preferences.libraryUpdateDeviceRestriction().get()
                         .sorted()
                         .map {
                             when (it) {
-                                UNMETERED_NETWORK -> context.getString(R.string.network_unmetered)
-                                CHARGING -> context.getString(R.string.charging)
+                                DEVICE_UNMETERED_NETWORK -> context.getString(R.string.network_unmetered)
+                                DEVICE_CHARGING -> context.getString(R.string.charging)
                                 else -> it
                             }
                         }
@@ -220,20 +222,42 @@ class SettingsLibraryController : SettingsController() {
                     summary = context.getString(R.string.restrictions, restrictionsText)
                 }
 
-                preferences.libraryUpdateRestriction().asFlow()
+                preferences.libraryUpdateDeviceRestriction().asFlow()
                     .onEach { updateSummary() }
                     .launchIn(viewScope)
             }
-            switchPreference {
-                key = Keys.updateOnlyNonCompleted
-                titleRes = R.string.pref_update_only_non_completed
-                defaultValue = true
-            }
-            switchPreference {
-                key = Keys.updateOnlyCompletelyRead
-                titleRes = R.string.pref_update_only_completely_read
-                summaryRes = R.string.pref_update_only_completely_read_summary
-                defaultValue = false
+            multiSelectListPreference {
+                key = Keys.libraryUpdateMangaRestriction
+                titleRes = R.string.pref_library_update_manga_restriction
+                entriesRes = arrayOf(R.string.pref_update_only_completely_read, R.string.pref_update_only_non_completed)
+                entryValues = arrayOf(MANGA_FULLY_READ, MANGA_ONGOING)
+                defaultValue = preferences.libraryUpdateMangaRestriction().defaultValue
+
+                preferences.libraryUpdateInterval().asImmediateFlow { isVisible = it > 0 }
+                    .launchIn(viewScope)
+
+                fun updateSummary() {
+                    val restrictions = preferences.libraryUpdateMangaRestriction().get()
+                        .sorted()
+                        .map {
+                            when (it) {
+                                MANGA_ONGOING -> context.getString(R.string.pref_update_only_non_completed)
+                                MANGA_FULLY_READ -> context.getString(R.string.pref_update_only_completely_read)
+                                else -> it
+                            }
+                        }
+                    val restrictionsText = if (restrictions.isEmpty()) {
+                        context.getString(R.string.none)
+                    } else {
+                        restrictions.joinToString()
+                    }
+
+                    summary = context.getString(R.string.restrictions, restrictionsText)
+                }
+
+                preferences.libraryUpdateMangaRestriction().asFlow()
+                    .onEach { updateSummary() }
+                    .launchIn(viewScope)
             }
             preference {
                 key = Keys.libraryUpdateCategories
@@ -285,11 +309,11 @@ class SettingsLibraryController : SettingsController() {
                     R.string.library_group_updates_all
                 )
                 entryValues = arrayOf(
-                    PreferenceValues.GroupLibraryMode.GLOBAL.name,
-                    PreferenceValues.GroupLibraryMode.ALL_BUT_UNGROUPED.name,
-                    PreferenceValues.GroupLibraryMode.ALL.name
+                    GroupLibraryMode.GLOBAL.name,
+                    GroupLibraryMode.ALL_BUT_UNGROUPED.name,
+                    GroupLibraryMode.ALL.name
                 )
-                defaultValue = PreferenceValues.GroupLibraryMode.GLOBAL.name
+                defaultValue = GroupLibraryMode.GLOBAL.name
                 summary = "%s"
             }
             // SY <--
