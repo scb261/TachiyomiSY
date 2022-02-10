@@ -1,7 +1,8 @@
 package eu.kanade.tachiyomi.ui.manga
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -97,6 +98,7 @@ import eu.kanade.tachiyomi.util.storage.getUriCompat
 import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.util.system.toShareIntent
 import eu.kanade.tachiyomi.util.system.toast
+import eu.kanade.tachiyomi.util.view.getCoordinates
 import eu.kanade.tachiyomi.util.view.shrinkOnScroll
 import eu.kanade.tachiyomi.util.view.snack
 import eu.kanade.tachiyomi.widget.materialdialogs.QuadStateTextView
@@ -447,7 +449,24 @@ class MangaController :
         fab.setOnClickListener {
             val item = presenter.getNextUnreadChapter()
             if (item != null) {
-                openChapter(item.chapter, it)
+                // Create animation listener
+                val revealAnimationListener: Animator.AnimatorListener = object : AnimatorListenerAdapter() {
+                    override fun onAnimationStart(animation: Animator?) {
+                        openChapter(item.chapter, true)
+                    }
+                }
+
+                // Get coordinates and start animation
+                actionFab?.getCoordinates()?.let { coordinates ->
+                    if (!binding.revealView.showRevealEffect(
+                            coordinates.x,
+                            coordinates.y,
+                            revealAnimationListener
+                        )
+                    ) {
+                        openChapter(item.chapter)
+                    }
+                }
             }
         }
     }
@@ -478,6 +497,20 @@ class MangaController :
         settingsSheet = null
         addSnackbar?.dismiss()
         super.onDestroyView(view)
+    }
+
+    override fun onActivityResumed(activity: Activity) {
+        if (view == null) return
+
+        // Check if animation view is visible
+        if (binding.revealView.isVisible) {
+            // Show the unreveal effect
+            actionFab?.getCoordinates()?.let { coordinates ->
+                binding.revealView.hideRevealEffect(coordinates.x, coordinates.y, 1920)
+            }
+        }
+
+        super.onActivityResumed(activity)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -1105,21 +1138,13 @@ class MangaController :
         }
     }
 
-    private fun openChapter(chapter: Chapter, sharedElement: View? = null) {
+    fun openChapter(chapter: Chapter, hasAnimation: Boolean = false) {
         val activity = activity ?: return
         val intent = ReaderActivity.newIntent(activity, presenter.manga, chapter)
-        activity.apply {
-            if (sharedElement != null) {
-                val activityOptions = ActivityOptions.makeSceneTransitionAnimation(
-                    activity,
-                    sharedElement,
-                    ReaderActivity.SHARED_ELEMENT_NAME
-                )
-                startActivity(intent, activityOptions.toBundle())
-            } else {
-                startActivity(intent)
-            }
+        if (hasAnimation) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         }
+        startActivity(intent)
     }
 
     override fun onItemClick(view: View?, position: Int): Boolean {
