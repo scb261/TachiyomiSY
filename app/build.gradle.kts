@@ -97,10 +97,10 @@ android {
         shaders = false
     }
 
-    lintOptions {
-        disable("MissingTranslation", "ExtraTranslation")
-        isAbortOnError = false
-        isCheckReleaseBuilds = false
+    lint {
+        disable.addAll(listOf("MissingTranslation", "ExtraTranslation"))
+        abortOnError = false
+        checkReleaseBuilds = false
     }
 
     compileOptions {
