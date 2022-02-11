@@ -31,8 +31,8 @@ import com.elvishew.xlog.printer.Printer
 import com.elvishew.xlog.printer.file.backup.NeverBackupStrategy
 import com.elvishew.xlog.printer.file.clean.FileLastModifiedCleanStrategy
 import com.elvishew.xlog.printer.file.naming.DateFileNameGenerator
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.ktx.Firebase
+// import com.google.firebase.analytics.ktx.analytics
+// import com.google.firebase.ktx.Firebase
 import com.ms_square.debugoverlay.DebugOverlay
 import com.ms_square.debugoverlay.modules.FpsModule
 import eu.kanade.tachiyomi.data.coil.ByteBufferFetcher
@@ -49,7 +49,7 @@ import eu.kanade.tachiyomi.util.system.animatorDurationScale
 import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.util.system.notification
 import exh.debug.DebugToggles
-import exh.log.CrashlyticsPrinter
+// import exh.log.CrashlyticsPrinter
 import exh.log.EHDebugModeOverlay
 import exh.log.EHLogLevel
 import exh.log.EnhancedFilePrinter
@@ -83,7 +83,7 @@ open class App : Application(), DefaultLifecycleObserver, ImageLoaderFactory {
         // if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         setupExhLogging() // EXH logging
         LogcatLogger.install(XLogLogcatLogger()) // SY Redirect Logcat to XLog
-        if (!BuildConfig.DEBUG) addAnalytics()
+        // if (!BuildConfig.DEBUG) addAnalytics()
 
         // TLS 1.3 support for Android < 10
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -169,11 +169,11 @@ open class App : Application(), DefaultLifecycleObserver, ImageLoaderFactory {
         }.build()
     }
 
-    private fun addAnalytics() {
-        if (syDebugVersion != "0") {
-            Firebase.analytics.setUserProperty("preview_version", syDebugVersion)
-        }
-    }
+    // private fun addAnalytics() {
+    //     if (syDebugVersion != "0") {
+    //         Firebase.analytics.setUserProperty("preview_version", syDebugVersion)
+    //     }
+    // }
 
     override fun onStop(owner: LifecycleOwner) {
         if (preferences.lockAppAfter().get() >= 0) {
@@ -233,9 +233,9 @@ open class App : Application(), DefaultLifecycleObserver, ImageLoaderFactory {
             }
 
         // Install Crashlytics in prod
-        if (!BuildConfig.DEBUG) {
-            printers += CrashlyticsPrinter(LogLevel.ERROR)
-        }
+        // if (!BuildConfig.DEBUG) {
+        //     printers += CrashlyticsPrinter(LogLevel.ERROR)
+        // }
 
         XLog.init(
             logConfig,
