@@ -1,14 +1,15 @@
 # TachiyomiXZM
 Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or [a fork](https://tachiyomi.org/forks/) that is not TachiyomiXZM if you have Android 6.0 or above.
 
-~~For now I will cherry-pick new commits once in a while.~~ I don't have time for it right now, so the app is in fix-only mode for now. I don't know if and when I will update it properly.
+## Current status
+The project is active, but rarely updated. Critical bugs are fixed as soon as possible, new changes from upstream are cherry-picked when I have time for it.
 
 ## Features
 
 Features are the same as in TachiyomiSY, but with following exceptions:
 * Animations from bottom navigation bar are removed due to my personal preference.
-* Dark theme is used by default.
 * Option to disable 'Sync EH favorites' and overflow buttons from Library screen (one less tap to manually update library).
+* Some settings are defaulted to different values compared to SY (default theme, replace 'Latest' button).
 * Any features added after last time I cherry-picked new commits.
 
 ## Download
