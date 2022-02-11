@@ -82,6 +82,10 @@ import logcat.LogPriority
 import uy.kohesive.injekt.injectLazy
 import java.util.LinkedList
 
+// XZM -->
+import androidx.core.content.ContextCompat
+// XZM <--
+
 class MainActivity : BaseViewBindingActivity<MainActivityBinding>() {
 
     private lateinit var router: Router
@@ -464,7 +468,8 @@ class MainActivity : BaseViewBindingActivity<MainActivityBinding>() {
         }
         // Color taken from m3_appbar_background
         window.statusBarColor = ColorUtils.compositeColors(
-            getColor(R.color.m3_appbar_overlay_color),
+            // getColor from upstream isn't supported in API <= 22
+            ContextCompat.getColor(this, R.color.m3_appbar_overlay_color),
             getThemeColor(R.attr.colorSurface)
         )
         super.onSupportActionModeStarted(mode)
