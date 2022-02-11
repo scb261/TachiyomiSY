@@ -13,6 +13,7 @@ import eu.kanade.tachiyomi.ui.base.controller.DialogController
 import eu.kanade.tachiyomi.ui.base.controller.withFadeTransaction
 import eu.kanade.tachiyomi.ui.category.biometric.BiometricTimesController
 import eu.kanade.tachiyomi.ui.security.SecureActivityDelegate
+import eu.kanade.tachiyomi.util.preference.bindTo
 import eu.kanade.tachiyomi.util.preference.defaultValue
 import eu.kanade.tachiyomi.util.preference.intListPreference
 import eu.kanade.tachiyomi.util.preference.onClick
@@ -35,13 +36,12 @@ class SettingsSecurityController : SettingsController() {
 
         if (AuthenticatorUtil.isSupported(context)) {
             switchPreference {
-                key = Keys.useAuthenticator
+                bindTo(preferences.useAuthenticator())
                 titleRes = R.string.lock_with_biometrics
-                defaultValue = false
             }
 
             intListPreference {
-                key = Keys.lockAppAfter
+                bindTo(preferences.lockAppAfter())
                 titleRes = R.string.lock_when_idle
                 val values = arrayOf("0", "1", "2", "5", "10", "-1")
                 entries = values.mapNotNull {
@@ -52,7 +52,6 @@ class SettingsSecurityController : SettingsController() {
                     }
                 }.toTypedArray()
                 entryValues = values
-                defaultValue = "0"
                 summary = "%s"
 
                 visibleIf(preferences.useAuthenticator()) { it }
@@ -60,10 +59,9 @@ class SettingsSecurityController : SettingsController() {
         }
 
         switchPreference {
-            key = Keys.secureScreen
+            bindTo(preferences.secureScreen())
             titleRes = R.string.secure_screen
             summaryRes = R.string.secure_screen_summary
-            defaultValue = false
         }
 
         switchPreference {
