@@ -21,7 +21,9 @@ import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MotionEvent
+// import android.view.View
 import android.view.View.LAYER_TYPE_HARDWARE
+// import android.view.Window
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -41,7 +43,10 @@ import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.slider.Slider
+// import com.google.android.material.transition.platform.MaterialContainerTransform
+// import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import dev.chrisbanes.insetter.applyInsetter
+// import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.Manga

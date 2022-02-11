@@ -7,12 +7,12 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.isVisible
 // import androidx.core.view.updateLayoutParams
 // import androidx.core.view.updateMargins
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
@@ -429,7 +429,7 @@ class WebtoonPageHolder(
         retryContainer = FrameLayout(context)
         frame.addView(retryContainer, MATCH_PARENT, parentHeight)
 
-        AppCompatButton(context).apply {
+        MaterialButton(context).apply {
             layoutParams = FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
                 gravity = Gravity.CENTER_HORIZONTAL
                 setMargins(0, parentHeight / 4, 0, 0)
@@ -461,7 +461,7 @@ class WebtoonPageHolder(
         }
         decodeErrorLayout = decodeLayout
 
-        TextView(context).apply {
+        MaterialTextView(context).apply {
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
                 setMargins(0, margins, 0, margins)
             }
@@ -471,7 +471,7 @@ class WebtoonPageHolder(
             decodeLayout.addView(this)
         }
 
-        AppCompatButton(context).apply {
+        MaterialButton(context).apply {
             layoutParams = FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
                 setMargins(0, margins, 0, margins)
             }
@@ -485,7 +485,7 @@ class WebtoonPageHolder(
 
         val imageUrl = page?.imageUrl
         if (imageUrl.orEmpty().startsWith("http", true)) {
-            AppCompatButton(context).apply {
+            MaterialButton(context).apply {
                 layoutParams = FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
                     setMargins(0, margins, 0, margins)
                 }

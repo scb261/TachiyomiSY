@@ -1,12 +1,12 @@
 package eu.kanade.tachiyomi.ui.manga
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.app.Activity
+// import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+// import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -97,7 +97,6 @@ import eu.kanade.tachiyomi.util.storage.getUriCompat
 import eu.kanade.tachiyomi.util.system.logcat
 import eu.kanade.tachiyomi.util.system.toShareIntent
 import eu.kanade.tachiyomi.util.system.toast
-import eu.kanade.tachiyomi.util.view.getCoordinates
 import eu.kanade.tachiyomi.util.view.shrinkOnScroll
 import eu.kanade.tachiyomi.util.view.snack
 import eu.kanade.tachiyomi.widget.ActionModeWithToolbar
@@ -123,6 +122,12 @@ import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import java.util.ArrayDeque
 import kotlin.math.min
+
+// XZM -->
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import eu.kanade.tachiyomi.util.view.getCoordinates
+// XZM <--
 
 class MangaController :
     NucleusController<MangaControllerBinding, MangaPresenter>,

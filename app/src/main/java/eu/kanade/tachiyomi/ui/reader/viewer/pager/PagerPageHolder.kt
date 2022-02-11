@@ -7,10 +7,10 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.core.view.setMargins
 // import androidx.core.view.updateLayoutParams
+import com.google.android.material.textview.MaterialTextView
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.ui.reader.model.InsertPage
@@ -657,7 +657,7 @@ class PagerPageHolder(
         }
         decodeErrorLayout = decodeLayout
 
-        TextView(context).apply {
+        MaterialTextView(context).apply {
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
                 setMargins(margins)
             }
