@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog bulletedList="true">
+    <changelogversion versionName="1.2.0" changeDate="February 12,2022">
+        <changelogtext>[b]Based on TachiyomiSY r437(from r412)[/b]</changelogtext>
+        <changelogtext>Latest button in browse isn't replaced by default anymore</changelogtext>
+    </changelogversion>
     <changelogversion versionName="1.1.5" changeDate="January 12,2022">
         <changelogtext>Fix manual check for updates</changelogtext>
     </changelogversion>
