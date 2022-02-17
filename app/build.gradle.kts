@@ -23,8 +23,8 @@ android {
         applicationId = "eu.kanade.tachiyomi.xzm"
         minSdk = AndroidConfig.minSdk
         targetSdk = AndroidConfig.targetSdk
-        versionCode = 10
-        versionName = "xzm-1.2.0"
+        versionCode = 11
+        versionName = "xzm-1.2.1"
 
         buildConfigField("String", "COMMIT_COUNT", "\"${getCommitCount()}\"")
         buildConfigField("String", "COMMIT_SHA", "\"${getGitSha()}\"")
