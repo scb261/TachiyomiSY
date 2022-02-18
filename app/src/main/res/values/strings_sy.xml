@@ -451,9 +451,6 @@
 
     <!-- Favorites Sync -->
     <string name="sync_favorites">Sync EH favorites</string>
-    <string name="eh_sync_button">\'Sync EH favorites\' button</string>
-    <string name="enable_eh_sync_button">Enable \'Sync EH favorites\' button</string>
-    <string name="pref_enable_eh_sync_button_summary">When disabled, hides the button and removes overflow menu from Library screen. This reduces number of taps needed to manually update library</string>
     <string name="favorites_sync_error">Favorites sync error</string>
     <string name="show_gallery">Show Gallery</string>
     <string name="favorites_sync_bad_library_state">%1$s Sync will not start until the gallery is in only one category.</string>
@@ -715,5 +712,12 @@
         <item quantity="other">%1$d seconds ago</item>
     </plurals>
     <string name="humanize_fallback">moments ago</string>
+
+    <!-- XZM -->
+    <string name="xzm_eh_settings_category">XZM settings for E-Hentai</string>
+    <string name="xzm_enable_eh_sync_button">Enable \'Sync EH favorites\' button</string>
+    <string name="xzm_enable_eh_sync_button_summary">When disabled, hides the button and removes overflow menu from Library screen. This reduces number of taps needed to manually update library</string>
+    <string name="xzm_cap_eh_chapters">Cap E-Hentai chapters to 3 [EXPERIMENTAL]</string>
+    <string name="xzm_cap_eh_chapters_summary">When enabled and a gallery isn\'t cached, it will show only 3 newest versions of the gallery. THERE ARE EDGE CASES WITH BUGS</string>
 
 </resources>

@@ -9,6 +9,7 @@ The project is active, but rarely updated. Critical bugs are fixed as soon as po
 Features are the same as in TachiyomiSY, but with following exceptions:
 * Animations from bottom navigation bar are removed due to my personal preference.
 * Option to disable 'Sync EH favorites' and overflow buttons from Library screen (one less tap to manually update library).
+* Option to limit number of EH gallery's versions to 3.
 * Some settings are defaulted to different values compared to SY (default theme, replace 'Latest' button).
 * Any features added after last time I cherry-picked new commits.
 

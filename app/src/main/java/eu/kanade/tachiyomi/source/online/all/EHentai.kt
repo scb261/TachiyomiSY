@@ -298,6 +298,14 @@ class EHentai(
         var url = manga.key
         var doc: Document
 
+        // XZM -->
+        // experimental feature to not go to the root
+        // edge case that may cause bugs with downloads and other things:
+        // user opens/refreshes the same gallery from different versions,
+        // this may add parent to cache and cause older versions to appear
+        val capChapters = preferences.capEhChapters().get()
+        var depth = 3
+        // XZM <--
         while (true) {
             val gid = EHentaiSearchMetadata.galleryId(url).toInt()
             val cachedParent = updateHelper.parentLookupTable.get(
@@ -311,6 +319,9 @@ class EHentai(
                     el.text().lowercase() == "parent:"
                 }!!.nextElementSibling()!!.selectFirst("a")?.attr("href")
 
+                // XZM -->
+                if (capChapters && --depth <= 0) break
+                // XZM <--
                 if (parentLink != null) {
                     updateHelper.parentLookupTable.put(
                         gid,

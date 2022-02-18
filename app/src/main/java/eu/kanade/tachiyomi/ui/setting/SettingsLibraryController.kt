@@ -357,20 +357,6 @@ class SettingsLibraryController : SettingsController() {
             }
         }
         // SY <--
-
-        // XZM -->
-        if (preferences.isHentaiEnabled().get()) {
-            preferenceCategory {
-                titleRes = R.string.eh_sync_button
-
-                switchPreference {
-                    bindTo(preferences.ehIsSyncEhEnabled())
-                    titleRes = R.string.enable_eh_sync_button
-                    summaryRes = R.string.pref_enable_eh_sync_button_summary
-                }
-            }
-        }
-        // XZM <--
     }
 
     class LibraryColumnsDialog : DialogController() {

@@ -512,6 +512,24 @@ class SettingsEhController : SettingsController() {
                 }
             }
         }
+
+        // XZM -->
+        preferenceCategory {
+            titleRes = R.string.xzm_eh_settings_category
+
+            switchPreference {
+                bindTo(preferences.ehIsSyncEhEnabled())
+                titleRes = R.string.xzm_enable_eh_sync_button
+                summaryRes = R.string.xzm_enable_eh_sync_button_summary
+            }
+
+            switchPreference {
+                bindTo(preferences.capEhChapters())
+                titleRes = R.string.xzm_cap_eh_chapters
+                summaryRes = R.string.xzm_cap_eh_chapters_summary
+            }
+        }
+        // XZM <--
     }
 
     private fun getRelativeTimeFromNow(then: Duration): RelativeTime {

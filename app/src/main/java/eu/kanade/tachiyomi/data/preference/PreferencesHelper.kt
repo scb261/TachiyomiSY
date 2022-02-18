@@ -519,5 +519,7 @@ class PreferencesHelper(val context: Context) {
 
     // XZM -->
     fun ehIsSyncEhEnabled() = flowPrefs.getBoolean("eh_is_sync_eh_enabled", true)
+
+    fun capEhChapters() = flowPrefs.getBoolean("cap_eh_chapters", false)
     // XZM <--
 }
