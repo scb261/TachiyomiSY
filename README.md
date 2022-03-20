@@ -1,28 +1,25 @@
 # TachiyomiXZM
-Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or [a fork](https://tachiyomi.org/forks/) that is not TachiyomiXZM if you have Android 6.0 or above.
+Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or an [official fork](https://tachiyomi.org/forks/) if you have Android 6.0 or above.
 
 ## Current status
-The project is active, but rarely updated. Critical bugs are fixed as soon as possible, new changes from upstream are cherry-picked when I have time for it.
+Due to the current situation in my country (Ukraine), the project is temporarily paused. Pull requests and issues are disabled.
 
-## Features
+## What was changed
 
-Features are the same as in TachiyomiSY, but with following exceptions:
-* Animations from bottom navigation bar are removed due to my personal preference.
-* Option to disable 'Sync EH favorites' and overflow buttons from Library screen (one less tap to manually update library).
-* Option to limit number of EH gallery's versions to 3.
-* Some settings are defaulted to different values compared to SY (default theme, replace 'Latest' button).
-* Any features added after last time I cherry-picked new commits.
+* Added an option to disable 'Sync EH favorites' button from Library screen. This also removes the overflow button and you can manually update library with one tap instead of two.
+* Added an option to limit number of EH gallery's versions to 3. Has edge cases with bugs.
+* Some settings are defaulted to different values compared to SY.
+* Animations from the bottom navigation bar are removed due to my personal preference.
+* Some minor stuff that isn't supported on Android 5.x.
 
 ## Download
 Get the app from [releases page](https://github.com/scb261/TachiyomiXZM/releases). There are no preview versions.
 
 ## Issues, Feature Requests and Contributing
 
-**Feature requests** will not be implemented except features I want personally. Ask for them in Tachiyomi or TachiyomiSY, and I may or may not cherry pick it from there.
+**Feature requests** and **Pull requests with new features** will be closed. Propose those features to Tachiyomi or TachiyomiSY, and I may eventually cherry pick them.
 
-**Bug reports** are welcome, but I don't promise any fixes due to my limited knowledge in Android apps.
-
-**Pull requests with fixes** are welcome, but it can take some time before I will merge it. Don't make PRs with new features.
+**Bug reports** and **Pull requests with fixes** are welcome.
 
 ## FAQ
 
