@@ -1,8 +1,10 @@
 # TachiyomiXZM
-Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes (and features while it's feasible) for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or an [official fork](https://tachiyomi.org/forks/) if you have Android 6.0 or above.
+Tachiyomi is a free and open source manga reader for Android 6.0 and above. **TachiyomiXZM** was created to get new fixes for **Android 5.x** based off TachiyomiSY fork. I strongly recommend using [Tachiyomi](https://github.com/tachiyomiorg/tachiyomi) or an [official fork](https://tachiyomi.org/forks/) if you have Android 6.0 or above.
 
 ## Current status
-Due to the current situation in my country (Ukraine), the project is temporarily paused. Pull requests and issues are disabled.
+The fork will only get bug fixes from now on. See [Issues, Feature Requests and Contributing](#issues-feature-requests-and-contributing) if you have a bug.
+
+[Help Ukraine](https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi).
 
 ## What was changed
 
@@ -13,13 +15,15 @@ Due to the current situation in my country (Ukraine), the project is temporarily
 * Some minor stuff that isn't supported on Android 5.x.
 
 ## Download
-Get the app from [releases page](https://github.com/scb261/TachiyomiXZM/releases). There are no preview versions.
+Get the app from the [releases page](https://github.com/scb261/TachiyomiXZM/releases). There are no preview versions.
 
 ## Issues, Feature Requests and Contributing
 
-**Feature requests** and **Pull requests with new features** will be closed. Propose those features to Tachiyomi or TachiyomiSY, and I may eventually cherry pick them.
+**Feature requests** and **Pull requests with new features** will be closed.
 
-**Bug reports** and **Pull requests with fixes** are welcome.
+**Bug reports** should contain a link to the commit from upstream that fixes it, otherwise I probably won't fix it.
+
+**Pull requests with fixes** are welcome.
 
 ## FAQ
 
